@@ -1,0 +1,226 @@
+﻿---
+---
+<section id="features" class="section" aria-labelledby="features-title">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">What HEARTz Does</span>
+      <h2 id="features-title" class="section-headline">
+        Three simple tools for better sound.
+      </h2>
+      <p class="section-intro">
+        Everything you need to tune your focus, calm, and music — without complex audio software.
+      </p>
+    </div>
+
+    <div class="bento-showcase">
+      <!-- 1. Wide Panel: 432 Hz Retuning -->
+      <div class="bento-panel bento-panel-wide">
+        <div class="bento-panel-content">
+          <span class="bento-panel-tag">Song Converter</span>
+          <h3>Retune your music to 432 Hz</h3>
+          <p>
+            Standard music is tuned to 440 Hz, which can feel harsh and fatiguing over time. Tuning to 432 Hz gives your favorite songs a warmer, softer sound that’s easier on your ears during long work or relaxation sessions.
+          </p>
+          <p style="margin-top: 0.75rem;">
+            Drop in any audio file. Our Natural Resample engine retunes it in seconds right in your browser with zero loss in audio quality.
+          </p>
+          
+          <div style="margin-top: 1.5rem; display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
+            <a href="https://heartz.pk-1ca.workers.dev/" class="btn btn-primary" rel="noopener noreferrer">
+              <span>Open Converter in App</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+
+            <!-- Inline audio comparison that plays right here without scrolling! -->
+            <button type="button" id="inline-432-btn" class="btn btn-secondary" aria-label="Play 432 Hz preview right here">
+              <svg class="inline-play-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+              <svg class="inline-pause-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="display: none;" aria-hidden="true">
+                <rect x="6" y="4" width="4" height="16"></rect>
+                <rect x="14" y="4" width="4" height="16"></rect>
+              </svg>
+              <span id="inline-432-label">Play 432 Hz Sample</span>
+            </button>
+
+            <button type="button" id="inline-440-btn" class="btn btn-ghost" aria-label="Play 440 Hz original preview right here">
+              <svg class="inline-play-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+              <svg class="inline-pause-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="display: none;" aria-hidden="true">
+                <rect x="6" y="4" width="4" height="16"></rect>
+                <rect x="14" y="4" width="4" height="16"></rect>
+              </svg>
+              <span id="inline-440-label">440 Hz Original (A/B)</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="ab-compare-box" role="region" aria-label="Converter details">
+          <div class="ab-row">
+            <span class="ab-label">Engine</span>
+            <span class="ab-value">Natural Resample</span>
+          </div>
+          <div class="ab-row">
+            <span class="ab-label">Acoustic Pitch</span>
+            <span class="ab-value">Warm 432 Hz (-31.8 cents)</span>
+          </div>
+          <div class="ab-row">
+            <span class="ab-label">Audio Quality</span>
+            <span class="ab-value">48 kHz / Float32</span>
+          </div>
+          <div class="ab-row">
+            <span class="ab-label">Privacy</span>
+            <span class="ab-value" style="color: var(--accent-mint);">100% In Browser (Zero Upload)</span>
+          </div>
+          <div class="ab-row">
+            <span class="ab-label">Output</span>
+            <span class="ab-value">Lossless WAV</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Panel: Frequency Lab -->
+      <div class="bento-panel bento-panel-col-6">
+        <div>
+          <span class="bento-panel-tag">Frequency Lab</span>
+          <h3>Pure Tones & Binaural Beats</h3>
+          <p>
+            Dial in clean frequencies (like 432 Hz or 528 Hz), add gentle binaural pulses to guide your brainwaves into focus or sleep, and blend in organic brown noise to block out distractions.
+          </p>
+        </div>
+
+        <div style="background: #060D09; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1.25rem; font-family: var(--font-mono); font-size: 0.8rem; margin-bottom: 1.25rem;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+            <span style="color: var(--text-muted);">BASE FREQUENCY</span>
+            <span style="color: var(--accent-mint);">432.00 Hz</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+            <span style="color: var(--text-muted);">BINAURAL PULSE</span>
+            <span style="color: var(--accent-mint);">7.83 Hz (Schumann)</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span style="color: var(--text-muted);">ORGANIC NOISE</span>
+            <span style="color: var(--text-secondary);">Brown Noise</span>
+          </div>
+        </div>
+
+        <a href="https://heartz.pk-1ca.workers.dev/" class="btn btn-ghost" style="align-self: flex-start; padding-left: 0; color: var(--accent-mint);" rel="noopener noreferrer">
+          <span>Open Frequency Lab in App →</span>
+        </a>
+      </div>
+
+      <!-- 3. Panel: Guided Sessions -->
+      <div class="bento-panel bento-panel-col-6">
+        <div>
+          <span class="bento-panel-tag">Instant Sessions</span>
+          <h3>Ready-to-Play Soundscapes</h3>
+          <p>
+            Curated sonic environments designed for deep work, calming anxiety, and restorative sleep. Every session starts and ends with gentle volume fades so nothing ever startles your ears.
+          </p>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.25rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; background: #060D09; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+            <div style="display: flex; align-items: center; gap: 0.6rem;">
+              <span style="color: var(--accent-mint); font-size: 0.9rem;">●</span>
+              <span style="font-size: 0.875rem; font-weight: 500;">Deep Ground (432 Hz)</span>
+            </div>
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">Binaural Brown Noise</span>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between; background: #060D09; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+            <div style="display: flex; align-items: center; gap: 0.6rem;">
+              <span style="color: var(--accent-mint); font-size: 0.9rem;">●</span>
+              <span style="font-size: 0.875rem; font-weight: 500;">Ocean Waves (7.83 Hz)</span>
+            </div>
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">Theta Meditation</span>
+          </div>
+        </div>
+
+        <a href="https://heartz.pk-1ca.workers.dev/" class="btn btn-ghost" style="align-self: flex-start; padding-left: 0; color: var(--accent-mint);" rel="noopener noreferrer">
+          <span>Browse All Sessions in App →</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Pure inline audio playback right inside the card (Zero scrolling, zero page jumping!)
+  let inlineAudio: HTMLAudioElement | null = null;
+  let activeType: '432' | '440' | null = null;
+
+  const btn432 = document.getElementById('inline-432-btn');
+  const btn440 = document.getElementById('inline-440-btn');
+  const label432 = document.getElementById('inline-432-label');
+  const label440 = document.getElementById('inline-440-label');
+
+  function updateIcons() {
+    if (btn432) {
+      const playSvg = btn432.querySelector('.inline-play-icon') as HTMLElement;
+      const pauseSvg = btn432.querySelector('.inline-pause-icon') as HTMLElement;
+      if (activeType === '432') {
+        if (playSvg) playSvg.style.display = 'none';
+        if (pauseSvg) pauseSvg.style.display = 'inline-block';
+        if (label432) label432.textContent = 'Pause 432 Hz';
+      } else {
+        if (playSvg) playSvg.style.display = 'inline-block';
+        if (pauseSvg) pauseSvg.style.display = 'none';
+        if (label432) label432.textContent = 'Play 432 Hz Sample';
+      }
+    }
+
+    if (btn440) {
+      const playSvg = btn440.querySelector('.inline-play-icon') as HTMLElement;
+      const pauseSvg = btn440.querySelector('.inline-pause-icon') as HTMLElement;
+      if (activeType === '440') {
+        if (playSvg) playSvg.style.display = 'none';
+        if (pauseSvg) pauseSvg.style.display = 'inline-block';
+        if (label440) label440.textContent = 'Pause 440 Hz';
+      } else {
+        if (playSvg) playSvg.style.display = 'inline-block';
+        if (pauseSvg) pauseSvg.style.display = 'none';
+        if (label440) label440.textContent = '440 Hz Original (A/B)';
+      }
+    }
+  }
+
+  function playInline(type: '432' | '440') {
+    const url = type === '432' 
+      ? '/audio/converter_432hz_retuned_preview.wav' 
+      : '/audio/converter_440hz_original_preview.wav';
+
+    if (activeType === type && inlineAudio) {
+      inlineAudio.pause();
+      activeType = null;
+      updateIcons();
+      return;
+    }
+
+    if (inlineAudio) {
+      inlineAudio.pause();
+    }
+
+    inlineAudio = new Audio(url);
+    inlineAudio.volume = 0.4;
+    inlineAudio.addEventListener('ended', () => {
+      activeType = null;
+      updateIcons();
+    });
+
+    inlineAudio.play().then(() => {
+      activeType = type;
+      updateIcons();
+    }).catch(e => {
+      console.warn('Inline audio play prevented:', e);
+      activeType = null;
+      updateIcons();
+    });
+  }
+
+  btn432?.addEventListener('click', () => playInline('432'));
+  btn440?.addEventListener('click', () => playInline('440'));
+</script>

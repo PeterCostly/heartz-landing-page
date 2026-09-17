@@ -1,0 +1,453 @@
+﻿---
+const TRACKS = [
+  {
+    id: "deep-ground",
+    title: "Binaural Brown (432 Hz)",
+    category: "Grounding Soundscape",
+    description: "Warm, soothing brown noise combined with a 432 Hz grounding tone to silence mental chatter and background distractions.",
+    url: "/audio/deep_ground_10s.wav",
+    duration: 10,
+    badge: "432 Hz · Brown Noise",
+  },
+  {
+    id: "soft-focus",
+    title: "Soft Focus (528 Hz)",
+    category: "Frequency Lab",
+    description: "Gentle 528 Hz tone enriched with subtle amplitude modulation and soft pink noise for deep work.",
+    url: "/audio/soft_focus_10s.wav",
+    duration: 10,
+    badge: "528 Hz · AM Modulation",
+  },
+  {
+    id: "quiet-meditation",
+    title: "Ocean Waves (7.83 Hz)",
+    category: "Binaural Beats",
+    description: "7.83 Hz Schumann pulse embedded in a 432 Hz carrier with natural ocean waves. 🎧 Stereo headphones required.",
+    url: "/audio/quiet_meditation_10s.wav",
+    duration: 10,
+    badge: "7.83 Hz · Headphones",
+  },
+  {
+    id: "converter-432",
+    title: "432 Hz Retune",
+    category: "Song Converter",
+    description: "Authentic music track converted from standard 440 Hz pitch to 432 Hz using HEARTz Natural Resample.",
+    url: "/audio/converter_432hz_retuned_preview.wav",
+    duration: 3.06,
+    badge: "432 Hz · Warmer Pitch",
+  },
+  {
+    id: "converter-440-orig",
+    title: "Original 440 Hz",
+    category: "Reference A/B",
+    description: "Original track excerpt in standard concert 440 Hz pitch for direct A/B acoustic comparison.",
+    url: "/audio/converter_440hz_original_preview.wav",
+    duration: 3.00,
+    badge: "440 Hz · Standard Pitch",
+  },
+];
+---
+<section id="demo-player" class="player-stage-section" aria-labelledby="player-heading">
+  <div class="container player-stage-wrapper">
+    <div 
+      id="hero-console" 
+      class="acoustic-console-card" 
+      role="region" 
+      aria-label="HEARTz Audio Player"
+      data-tracks={JSON.stringify(TRACKS)}
+    >
+      <!-- Header status bar -->
+      <div class="console-header-bar">
+        <div class="console-system-status">
+          <span class="status-indicator-light" aria-hidden="true"></span>
+          <span>Binaural Brown Noise · 48 kHz Audio</span>
+        </div>
+        <div id="console-time-display" class="console-time-badge">00:00 / 00:10</div>
+      </div>
+
+      <!-- Sample selection pills - full width & centered wrapping, zero clipping! -->
+      <div id="console-preset-pills" class="preset-pills-row" role="tablist" aria-label="Audio Samples">
+        {TRACKS.map((track, idx) => (
+          <button 
+            type="button" 
+            class={`pill-tab ${idx === 0 ? "active" : ""}`} 
+            role="tab" 
+            aria-selected={idx === 0 ? "true" : "false"} 
+            data-index={idx}
+          >
+            <span>●</span> {track.title}
+          </button>
+        ))}
+      </div>
+
+      <!-- Waveform Oscilloscope -->
+      <div class="oscilloscope-box" aria-hidden="true">
+        <canvas id="live-waveform-canvas"></canvas>
+      </div>
+
+      <!-- Track info -->
+      <div class="track-info-panel">
+        <div class="track-meta-row">
+          <span id="track-category-text" class="track-category-label">{TRACKS[0].category}</span>
+          <span id="track-badge-tag" class="track-badge-tag">{TRACKS[0].badge}</span>
+        </div>
+        <strong id="track-title-text" class="track-name" style="display: block;">{TRACKS[0].title}</strong>
+        <p id="track-description-text" class="track-description-text">
+          {TRACKS[0].description}
+        </p>
+      </div>
+
+      <!-- Scrubber -->
+      <div id="timeline-scrubber-track" class="timeline-scrubber" role="progressbar" aria-label="Audio progress" tabindex="0">
+        <div id="timeline-progress-fill" class="timeline-progress-fill"></div>
+      </div>
+
+      <!-- Controls -->
+      <div class="console-controls-bar">
+        <button type="button" id="console-play-btn" class="main-play-button" aria-label="Play audio sample">
+          <svg class="play-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+            <polygon points="6 4 20 12 6 20 6 4"></polygon>
+          </svg>
+          <svg class="pause-icon-svg" viewBox="0 0 24 24" style="display: none;" aria-hidden="true">
+            <rect x="6" y="4" width="4" height="16"></rect>
+            <rect x="14" y="4" width="4" height="16"></rect>
+          </svg>
+          <svg class="loading-icon-svg" viewBox="0 0 24 24" style="display: none;" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="3" stroke-dasharray="14 14" fill="none"></circle>
+          </svg>
+        </button>
+
+        <div class="volume-cluster">
+          <span style="color: var(--text-muted); font-size: 0.8rem;" aria-hidden="true">VOL</span>
+          <label for="console-volume-slider" class="sr-only" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0);">Volume</label>
+          <input type="range" id="console-volume-slider" class="volume-input" min="0" max="100" value="30" aria-label="Volume">
+          <span id="console-volume-val" class="volume-display">30%</span>
+        </div>
+      </div>
+
+      <div id="console-error-box" class="player-error" hidden role="alert" style="margin-top: 1rem; color: var(--error-color); font-size: 0.82rem; background: rgba(248,113,113,0.1); padding: 0.5rem 0.75rem; border-radius: 6px;">
+        Failed to load audio sample. Please refresh and retry.
+      </div>
+
+      <!-- Direct app link -->
+      <div class="console-quiet-footer">
+        <span>Like this sound?</span>
+        <a id="console-direct-app-link" href="https://heartz.pk-1ca.workers.dev/?session=deep-ground" rel="noopener noreferrer">
+          Open in HEARTz app →
+        </a>
+      </div>
+
+      <div id="console-announcer" class="sr-only" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0);" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const consoleEl = document.getElementById("hero-console");
+  const rawTracks = consoleEl?.getAttribute("data-tracks");
+  const TRACKS = rawTracks ? JSON.parse(rawTracks) : [];
+
+  let currentIndex = 0;
+  let audioEl: HTMLAudioElement | null = null;
+  let audioCtx: AudioContext | null = null;
+  let gainNode: GainNode | null = null;
+  let isPlaying = false;
+  let currentVolume = 0.3;
+  let animId: number | null = null;
+  let phase = 0;
+  let amp = 0;
+
+  const playBtn = document.getElementById("console-play-btn");
+  const timeDisplay = document.getElementById("console-time-display");
+  const progressFill = document.getElementById("timeline-progress-fill");
+  const scrubberTrack = document.getElementById("timeline-scrubber-track");
+  const volumeSlider = document.getElementById("console-volume-slider") as HTMLInputElement | null;
+  const volumeVal = document.getElementById("console-volume-val");
+  const trackTitle = document.getElementById("track-title-text");
+  const trackCategory = document.getElementById("track-category-text");
+  const trackDesc = document.getElementById("track-description-text");
+  const trackBadge = document.getElementById("track-badge-tag");
+  const errorBox = document.getElementById("console-error-box");
+  const announcer = document.getElementById("console-announcer");
+  const directAppLink = document.getElementById("console-direct-app-link");
+  const canvas = document.getElementById("live-waveform-canvas") as HTMLCanvasElement | null;
+  const canvasCtx = canvas ? canvas.getContext("2d") : null;
+
+  function initAudio() {
+    if (!audioEl) {
+      audioEl = new Audio();
+      audioEl.preload = "none";
+      audioEl.crossOrigin = "anonymous";
+
+      audioEl.addEventListener("timeupdate", () => {
+        if (!audioEl) return;
+        const cur = audioEl.currentTime;
+        const dur = audioEl.duration || (TRACKS[currentIndex]?.duration || 10);
+        const pct = Math.min(100, Math.max(0, (cur / dur) * 100));
+        if (progressFill) progressFill.style.width = `${pct}%`;
+        if (timeDisplay) timeDisplay.textContent = `${formatTime(cur)} / ${formatTime(dur)}`;
+      });
+
+      audioEl.addEventListener("ended", () => {
+        stopPlayback();
+      });
+
+      audioEl.addEventListener("error", () => {
+        isPlaying = false;
+        updatePlayBtn(false);
+        if (errorBox) errorBox.hidden = false;
+      });
+    }
+
+    const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+    if (AudioContextClass && !audioCtx) {
+      try {
+        audioCtx = new AudioContextClass();
+        gainNode = audioCtx.createGain();
+        gainNode.gain.setValueAtTime(currentVolume, audioCtx.currentTime);
+        const srcNode = audioCtx.createMediaElementSource(audioEl);
+        srcNode.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+      } catch (e) {
+        console.warn("Web Audio fallback:", e);
+      }
+    }
+  }
+
+  function formatTime(sec: number) {
+    const r = Math.floor(sec);
+    const m = Math.floor(r / 60);
+    const s = r % 60;
+    return `${m.toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}`;
+  }
+
+  function updatePlayBtn(playing: boolean, loading = false) {
+    if (!playBtn) return;
+    const playSvg = playBtn.querySelector(".play-icon-svg") as HTMLElement;
+    const pauseSvg = playBtn.querySelector(".pause-icon-svg") as HTMLElement;
+    const loadSvg = playBtn.querySelector(".loading-icon-svg") as HTMLElement;
+
+    if (loading) {
+      if (playSvg) playSvg.style.display = "none";
+      if (pauseSvg) pauseSvg.style.display = "none";
+      if (loadSvg) loadSvg.style.display = "block";
+    } else if (playing) {
+      if (playSvg) playSvg.style.display = "none";
+      if (pauseSvg) pauseSvg.style.display = "block";
+      if (loadSvg) loadSvg.style.display = "none";
+    } else {
+      if (playSvg) playSvg.style.display = "block";
+      if (pauseSvg) pauseSvg.style.display = "none";
+      if (loadSvg) loadSvg.style.display = "none";
+    }
+  }
+
+  async function togglePlay() {
+    initAudio();
+    if (!audioEl || !TRACKS[currentIndex]) return;
+
+    if (isPlaying) {
+      if (gainNode && audioCtx) {
+        gainNode.gain.linearRampToValueAtTime(0.001, audioCtx.currentTime + 0.04);
+        await new Promise((r) => setTimeout(r, 45));
+      }
+      audioEl.pause();
+      isPlaying = false;
+      updatePlayBtn(false);
+      stopWave();
+      if (announcer) announcer.textContent = "Audio paused.";
+    } else {
+      const track = TRACKS[currentIndex];
+      if (!audioEl.src.endsWith(track.url)) {
+        updatePlayBtn(false, true);
+        audioEl.src = track.url;
+        audioEl.load();
+      }
+
+      try {
+        if (audioCtx && audioCtx.state === "suspended") {
+          await audioCtx.resume();
+        }
+        if (gainNode && audioCtx) {
+          gainNode.gain.cancelScheduledValues(audioCtx.currentTime);
+          gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+          gainNode.gain.linearRampToValueAtTime(currentVolume, audioCtx.currentTime + 0.04);
+        } else {
+          audioEl.volume = currentVolume;
+        }
+
+        await audioEl.play();
+        isPlaying = true;
+        updatePlayBtn(true);
+        startWave();
+        if (errorBox) errorBox.hidden = true;
+        if (announcer) announcer.textContent = `Playing: ${track.title}`;
+      } catch (err) {
+        console.error("Playback error:", err);
+        isPlaying = false;
+        updatePlayBtn(false);
+        if (errorBox) errorBox.hidden = false;
+      }
+    }
+  }
+
+  function stopPlayback() {
+    if (audioEl) {
+      audioEl.pause();
+      audioEl.currentTime = 0;
+    }
+    isPlaying = false;
+    updatePlayBtn(false);
+    if (progressFill) progressFill.style.width = "0%";
+    if (timeDisplay && TRACKS[currentIndex]) {
+      timeDisplay.textContent = `00:00 / ${formatTime(TRACKS[currentIndex].duration)}`;
+    }
+    stopWave();
+  }
+
+  function selectTrack(idx: number) {
+    if (!TRACKS[idx]) return;
+    if (idx === currentIndex && audioEl?.src) return;
+    stopPlayback();
+    currentIndex = idx;
+    const track = TRACKS[idx];
+
+    if (trackTitle) trackTitle.textContent = track.title;
+    if (trackCategory) trackCategory.textContent = track.category;
+    if (trackDesc) trackDesc.textContent = track.description;
+    if (trackBadge) trackBadge.textContent = track.badge;
+    if (timeDisplay) timeDisplay.textContent = `00:00 / ${formatTime(track.duration)}`;
+
+    const pills = document.querySelectorAll<HTMLButtonElement>("#console-preset-pills .pill-tab");
+    pills.forEach((p, i) => {
+      const active = i === idx;
+      p.classList.toggle("active", active);
+      p.setAttribute("aria-selected", String(active));
+    });
+
+    if (announcer) announcer.textContent = `Selected: ${track.title}`;
+
+    if (directAppLink && track.id) {
+      directAppLink.setAttribute("href", `https://heartz.pk-1ca.workers.dev/?session=${track.id}`);
+    }
+  }
+
+  playBtn?.addEventListener("click", () => togglePlay());
+
+  const pillBtns = document.querySelectorAll<HTMLButtonElement>("#console-preset-pills .pill-tab");
+  pillBtns.forEach((btn, idx) => {
+    btn.addEventListener("click", () => selectTrack(idx));
+  });
+
+  scrubberTrack?.addEventListener("click", (e) => {
+    if (!audioEl || !scrubberTrack || !TRACKS[currentIndex]) return;
+    const rect = scrubberTrack.getBoundingClientRect();
+    const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+    const dur = audioEl.duration || TRACKS[currentIndex].duration;
+    audioEl.currentTime = ratio * dur;
+  });
+
+  volumeSlider?.addEventListener("input", (e) => {
+    const val = Number((e.target as HTMLInputElement).value);
+    currentVolume = val / 100;
+    if (gainNode && audioCtx) {
+      gainNode.gain.setTargetAtTime(currentVolume, audioCtx.currentTime, 0.02);
+    } else if (audioEl) {
+      audioEl.volume = currentVolume;
+    }
+    if (volumeVal) volumeVal.textContent = `${val}%`;
+  });
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden && isPlaying) {
+      togglePlay();
+    }
+  });
+
+  function resizeWaveCanvas() {
+    if (!canvas || !canvasCtx) return;
+    const rect = canvas.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    canvasCtx.scale(dpr, dpr);
+    drawWave(amp);
+  }
+
+  function startWave() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      drawWave(0.6);
+      return;
+    }
+    if (animId !== null) return;
+    function loop() {
+      phase += 0.05;
+      amp = Math.min(1, amp + 0.06);
+      drawWave(amp);
+      animId = requestAnimationFrame(loop);
+    }
+    animId = requestAnimationFrame(loop);
+  }
+
+  function stopWave() {
+    if (animId !== null) {
+      cancelAnimationFrame(animId);
+      animId = null;
+    }
+    function settle() {
+      amp = Math.max(0, amp - 0.08);
+      drawWave(amp);
+      if (amp > 0) requestAnimationFrame(settle);
+    }
+    settle();
+  }
+
+  function drawWave(amplitude: number) {
+    if (!canvas || !canvasCtx) return;
+    const ctx = canvasCtx;
+    const w = canvas.getBoundingClientRect().width;
+    const h = canvas.getBoundingClientRect().height;
+    ctx.clearRect(0, 0, w, h);
+
+    const midY = h / 2;
+    const baseAmp = 18 * amplitude;
+
+    ctx.beginPath();
+    ctx.strokeStyle = "rgba(139, 161, 148, 0.12)";
+    ctx.lineWidth = 1;
+    ctx.setLineDash([3, 3]);
+    ctx.moveTo(0, midY);
+    ctx.lineTo(w, midY);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    ctx.beginPath();
+    ctx.strokeStyle = "rgba(16, 185, 129, 0.25)";
+    ctx.lineWidth = 4;
+    for (let x = 0; x <= w; x += 3) {
+      const nx = x / w;
+      const envelope = Math.sin(nx * Math.PI);
+      const y = midY + Math.sin(nx * 8 + phase * 0.8) * (baseAmp * 0.7) * envelope;
+      if (x === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.strokeStyle = amplitude > 0.05 ? "#34D399" : "rgba(139, 161, 148, 0.4)";
+    ctx.lineWidth = 2;
+    for (let x = 0; x <= w; x += 2) {
+      const nx = x / w;
+      const envelope = Math.sin(nx * Math.PI);
+      const y = midY + Math.sin(nx * 10 + phase) * baseAmp * envelope;
+      if (x === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+  }
+
+  window.addEventListener("resize", resizeWaveCanvas);
+  resizeWaveCanvas();
+
+  (window as any).__heartzSelectTrack = selectTrack;
+</script>

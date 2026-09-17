@@ -1,0 +1,81 @@
+﻿---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import AudioConsole from "../components/AudioConsole.astro";
+import FeaturesStudio from "../components/FeaturesStudio.astro";
+import SignalFlow from "../components/SignalFlow.astro";
+import LibraryShowcase from "../components/LibraryShowcase.astro";
+import ArchitecturePrivacy from "../components/ArchitecturePrivacy.astro";
+import Faq from "../components/Faq.astro";
+import ContactFooter from "../components/ContactFooter.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    
+    <title>HEARTz — Pure Sound for Focus, Calm & 432 Hz Music</title>
+    <meta 
+      name="description" 
+      content="Play grounding binaural brown noise, pure 432 Hz frequencies, and retune songs in your browser. 100% private, free, no signup required." 
+    />
+
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#040705" />
+
+    <!-- Open Graph & Social -->
+    <meta property="og:title" content="HEARTz — Pure Sound for Focus, Calm & 432 Hz Music" />
+    <meta property="og:description" content="Play grounding frequencies, soothing binaural brown noise, or retune any song to 432 Hz. Free, private, and instant in your browser." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "HEARTz",
+        "inLanguage": "en",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "All",
+        "description": "Pure sound for focus and calm. Play binaural brown noise, pure frequencies, and retune music to 432 Hz in your browser.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Piotr",
+          "url": "https://aitificer.com/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <a href="#start" class="skip-link">Skip to main content</a>
+
+    <Header />
+
+    <main id="main-content">
+      <Hero />
+      <AudioConsole />
+      <FeaturesStudio />
+      <SignalFlow />
+      <LibraryShowcase />
+      <ArchitecturePrivacy />
+      <Faq />
+      <ContactFooter />
+    </main>
+  </body>
+</html>

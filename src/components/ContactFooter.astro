@@ -1,0 +1,92 @@
+﻿---
+---
+<section id="contact" class="section" aria-labelledby="contact-title">
+  <div class="container">
+    <div class="monolith-card">
+      <span class="section-tag" style="margin-bottom: 1rem;">Get Started</span>
+      <h2 id="contact-title" class="section-headline" style="max-width: 38rem; margin-left: auto; margin-right: auto;">
+        Experience pure resonance.
+      </h2>
+      <p class="section-intro" style="max-width: 32rem; margin-left: auto; margin-right: auto;">
+        Open HEARTz in your browser and start your session in seconds. Free, private, no signup needed.
+      </p>
+
+      <div class="monolith-actions">
+        <a href="https://heartz.pk-1ca.workers.dev/" class="btn btn-primary" rel="noopener noreferrer" style="font-size: 1.05rem; padding: 0.85rem 1.85rem;">
+          <span>Open HEARTz Now</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+
+        <button type="button" id="copy-email-btn" class="btn btn-secondary" aria-label="Copy email address to clipboard">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          <span id="copy-btn-label">contact@aitificer.com</span>
+        </button>
+      </div>
+
+      <div id="email-toast" role="status" aria-live="polite" style="min-height: 1.5rem; font-size: 0.8125rem; color: var(--accent-mint); font-family: var(--font-mono); opacity: 0; transition: opacity 0.25s ease;">
+        ✓ Copied email to clipboard!
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-row">
+    <div>
+      <p>
+        © 2026 <strong>HEARTz</strong>. All rights reserved.
+      </p>
+      <p style="font-size: 0.8125rem; margin-top: 0.25rem;">
+        Created by <a href="https://aitificer.com/" target="_blank" rel="noopener noreferrer" class="author-highlight">@aitificer</a>
+      </p>
+    </div>
+
+    <div style="display: flex; gap: 1.5rem; font-size: 0.8125rem; font-family: var(--font-mono);">
+      <span>Free Web Audio</span>
+      <span>·</span>
+      <span>100% On-Device</span>
+      <span>·</span>
+      <a href="mailto:contact@aitificer.com" style="color: var(--text-muted); text-decoration: none;">contact@aitificer.com</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const copyBtn = document.getElementById("copy-email-btn");
+  const copyLabel = document.getElementById("copy-btn-label");
+  const toast = document.getElementById("email-toast");
+  const emailToCopy = "contact@aitificer.com";
+
+  copyBtn?.addEventListener("click", async () => {
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(emailToCopy);
+      } else {
+        const textarea = document.createElement("textarea");
+        textarea.value = emailToCopy;
+        textarea.style.position = "fixed";
+        textarea.style.opacity = "0";
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+      }
+
+      if (copyLabel) copyLabel.textContent = "Copied!";
+      if (toast) toast.style.opacity = "1";
+
+      setTimeout(() => {
+        if (copyLabel) copyLabel.textContent = emailToCopy;
+        if (toast) toast.style.opacity = "0";
+      }, 3000);
+    } catch (err) {
+      console.warn("Clipboard copy failed:", err);
+    }
+  });
+</script>

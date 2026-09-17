@@ -1,0 +1,68 @@
+[
+  {
+    "backgroundGainDbfs": "-24",
+    "channels": 2,
+    "description": "A grounded blend with a restrained 432 Hz resonance layer.",
+    "durationSeconds": 10,
+    "file": "deep_ground_10s.wav",
+    "format": "WAV PCM24",
+    "id": "deep-ground",
+    "listeningAdvice": "Speakers or wired headphones at a comfortable low level.",
+    "name": "Deep Ground",
+    "resonanceGainDbfs": "-24",
+    "sampleRate": 48000,
+    "sha256": "06db1593f7611fc3c921526afb88bcd032c52792ccec1cbd028545f518e3ddbe"
+  },
+  {
+    "backgroundGainDbfs": "-25",
+    "channels": 2,
+    "description": "A light procedural bed with subtle amplitude movement.",
+    "durationSeconds": 10,
+    "file": "soft_focus_10s.wav",
+    "format": "WAV PCM24",
+    "id": "soft-focus",
+    "listeningAdvice": "Wired headphones provide the most predictable stereo path.",
+    "name": "Soft Focus",
+    "resonanceGainDbfs": "-27",
+    "sampleRate": 48000,
+    "sha256": "5435a7bf462847dd26128e9ad8848f524cf37a1942a287f3d1e91f5df8ff60e1"
+  },
+  {
+    "backgroundGainDbfs": "-28",
+    "channels": 2,
+    "description": "A spacious procedural texture with a mild binaural layer.",
+    "durationSeconds": 10,
+    "file": "quiet_meditation_10s.wav",
+    "format": "WAV PCM24",
+    "id": "quiet-meditation",
+    "listeningAdvice": "Wired stereo headphones are preferred for the binaural component.",
+    "name": "Quiet Meditation",
+    "resonanceGainDbfs": "-30",
+    "sampleRate": 48000,
+    "sha256": "df76d5ba67fdef538c1bfa1712234eb1d28997ad52f774300a11bc160900609a"
+  },
+  {
+    "channels": 2,
+    "description": "Autentyczny fragment utworu przestrojony ze stroju 440 Hz do 432 Hz za pomocą Natural Resample w HEARTz.",
+    "durationSeconds": 3.06,
+    "file": "converter_432hz_retuned_preview.wav",
+    "format": "WAV IEEE_FLOAT32 (Natural Resample 440 -> 432)",
+    "id": "converter-432",
+    "listeningAdvice": "Zwróć uwagę na subtelne obniżenie tonu i spowolnienie tempa utworu.",
+    "name": "Konwerter: Przestrojenie 432 Hz",
+    "sampleRate": 48000,
+    "sha256": "71f6853df00c80e86b1068f58c8b85effa113c6973d1215c62ef8b397e1582a5"
+  },
+  {
+    "channels": 2,
+    "description": "Oryginalny fragment utworu w standardowym stroju 440 Hz.",
+    "durationSeconds": 3.0,
+    "file": "converter_440hz_original_preview.wav",
+    "format": "WAV IEEE_FLOAT32 (Original 440 Hz)",
+    "id": "converter-440-orig",
+    "listeningAdvice": "Punkt odniesienia do porównania ze strojem 432 Hz.",
+    "name": "Konwerter: Oryginał 440 Hz",
+    "sampleRate": 48000,
+    "sha256": "dde394358712307773d41dfddfe7292bf0d140094ad8dabf378d5701b96e33df"
+  }
+]

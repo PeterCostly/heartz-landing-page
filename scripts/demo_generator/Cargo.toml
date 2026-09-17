@@ -1,0 +1,12 @@
+[package]
+name = "demo-generator"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+resonance-protocol = { path = "../../../resonance-os-mvp-spec/crates/resonance-protocol" }
+resonance-scheduler = { path = "../../../resonance-os-mvp-spec/crates/resonance-scheduler" }
+resonance-session = { path = "../../../resonance-os-mvp-spec/crates/resonance-session" }
+resonance-export = { path = "../../../resonance-os-mvp-spec/crates/resonance-export" }
+serde_json = "1.0"
+sha2 = "0.10"
