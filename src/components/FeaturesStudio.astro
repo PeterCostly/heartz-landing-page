@@ -1,147 +1,192 @@
-﻿---
 ---
-<section id="features" class="section" aria-labelledby="features-title">
+// Exactly 3 Products = Exactly 3 Majestic Resonant Spheres
+const ACOUSTIC_TOOLS = [
+  {
+    id: "converter-432",
+    pillar: "converter",
+    title: "432 Hz Song Converter",
+    subtitle: "Warm 432 Hz (-31.8 cents)",
+    tag: "Acoustic Retuning",
+    description: "Drop in any audio file. Our Natural Resample engine retunes it in 3 seconds right in your browser with 0 loss in audio quality.",
+    audioUrl: "/audio/converter_432hz_retuned_preview.wav",
+    sphereGradient: "radial-gradient(circle at 35% 30%, #FDC5B8 0%, #F86934 32%, #AF0A25 68%, #2C0515 100%)",
+    specs: ["48 kHz / Float32", "Lossless WAV Export", "100% In Browser (0 Uploads)"],
+    appUrl: "https://heartz.pk-1ca.workers.dev/?tool=converter",
+    ctaLabel: "Open Converter in App"
+  },
+  {
+    id: "frequency-lab",
+    pillar: "lab",
+    title: "Pure Tones & Binaural Beats",
+    subtitle: "0.01 Hz Precision Synthesis",
+    tag: "Frequency Lab",
+    description: "Dial in clean frequencies like 432 Hz or 528 Hz, add gentle binaural pulses designed for focused work, and sculpt pure sine waves without distortion.",
+    audioUrl: "/audio/soft_focus_10s.wav",
+    sphereGradient: "radial-gradient(circle at 35% 30%, #FFF8E1 0%, #F7D86C 28%, #F9A649 60%, #AF0A25 90%, #2C0515 100%)",
+    specs: ["528 Hz & 432 Hz Base", "Binaural Modulation", "Anti-Pop Gain Ramp"],
+    appUrl: "https://heartz.pk-1ca.workers.dev/?tool=lab",
+    ctaLabel: "Open Frequency Lab in App"
+  },
+  {
+    id: "soundscapes",
+    pillar: "soundscapes",
+    title: "Ready-to-Play Soundscapes",
+    subtitle: "Organic Grounding Sessions",
+    tag: "Instant Sessions",
+    description: "Curated acoustic environments designed for deep work, calming anxiety, and restorative sleep. Features grounding binaural brown noise with smooth volume fades.",
+    audioUrl: "/audio/deep_ground_10s.wav",
+    sphereGradient: "radial-gradient(circle at 35% 30%, #E7927F 0%, #C85038 32%, #8C2D19 70%, #2C0515 100%)",
+    specs: ["Binaural Brown Noise", "Ocean Waves", "Click-Free Fade"],
+    appUrl: "https://heartz.pk-1ca.workers.dev/?session=deep-ground",
+    ctaLabel: "Browse Sessions in App"
+  }
+];
+---
+
+<section id="features" class="section section-light" aria-labelledby="features-title">
   <div class="container">
-    <div class="section-head">
-      <span class="section-tag">What HEARTz Does</span>
-      <h2 id="features-title" class="section-headline">
-        Three simple tools for better sound.
-      </h2>
-      <p class="section-intro">
+    <!-- Editorial Split Header -->
+    <div class="stage-header-split">
+      <div class="stage-header-left">
+        <span class="section-tag">What HEARTz Does</span>
+        <h2 id="features-title" class="section-headline">
+          3 simple tools for better sound.
+        </h2>
+      </div>
+      <p class="section-intro stage-header-intro">
         Everything you need to tune your focus, calm, and music — without complex audio software.
       </p>
     </div>
 
-    <div class="bento-showcase">
-      <!-- 1. Wide Panel: 432 Hz Retuning -->
-      <div class="bento-panel bento-panel-wide">
-        <div class="bento-panel-content">
-          <span class="bento-panel-tag">Song Converter</span>
-          <h3>Retune your music to 432 Hz</h3>
-          <p>
-            Standard music is tuned to 440 Hz, which can feel harsh and fatiguing over time. Tuning to 432 Hz gives your favorite songs a warmer, softer sound that’s easier on your ears during long work or relaxation sessions.
-          </p>
-          <p style="margin-top: 0.75rem;">
-            Drop in any audio file. Our Natural Resample engine retunes it in seconds right in your browser with zero loss in audio quality.
-          </p>
-          
-          <div style="margin-top: 1.5rem; display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
-            <a href="https://heartz.pk-1ca.workers.dev/" class="btn btn-primary" rel="noopener noreferrer">
-              <span>Open Converter in App</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </a>
+    <!-- Majestic Stage Card -->
+    <div 
+      id="majestic-stage"
+      class="majestic-stage-card" 
+      role="region" 
+      aria-label="HEARTz 3 Core Tools"
+      data-tools={JSON.stringify(ACOUSTIC_TOOLS)}
+    >
+      <!-- Top 3 Pillars Navigation -->
+      <div class="stage-pillars-nav" role="tablist" aria-label="3 Core Pillars">
+        <button type="button" class="stage-pillar-btn active" data-index="0" role="tab" aria-selected="true">
+          <span class="pillar-dot dot-converter" aria-hidden="true"></span>
+          <span>Song Converter</span>
+        </button>
+        <button type="button" class="stage-pillar-btn" data-index="1" role="tab" aria-selected="false">
+          <span class="pillar-dot dot-lab" aria-hidden="true"></span>
+          <span>Frequency Lab</span>
+        </button>
+        <button type="button" class="stage-pillar-btn" data-index="2" role="tab" aria-selected="false">
+          <span class="pillar-dot dot-soundscapes" aria-hidden="true"></span>
+          <span>Soundscapes</span>
+        </button>
+      </div>
 
-            <!-- Inline audio comparison that plays right here without scrolling! -->
-            <button type="button" id="inline-432-btn" class="btn btn-secondary" aria-label="Play 432 Hz preview right here">
-              <svg class="inline-play-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-              <svg class="inline-pause-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="display: none;" aria-hidden="true">
-                <rect x="6" y="4" width="4" height="16"></rect>
-                <rect x="14" y="4" width="4" height="16"></rect>
-              </svg>
-              <span id="inline-432-label">Play 432 Hz Sample</span>
-            </button>
-
-            <button type="button" id="inline-440-btn" class="btn btn-ghost" aria-label="Play 440 Hz original preview right here">
-              <svg class="inline-play-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-              <svg class="inline-pause-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="display: none;" aria-hidden="true">
-                <rect x="6" y="4" width="4" height="16"></rect>
-                <rect x="14" y="4" width="4" height="16"></rect>
-              </svg>
-              <span id="inline-440-label">440 Hz Original (A/B)</span>
-            </button>
-          </div>
+      <!-- 3 Resonant Spheres Stage -->
+      <div class="spheres-stage-viewport">
+        <div class="spheres-carousel-track" id="spheres-track" role="region" aria-label="3 Resonant Acoustic Spheres">
+          {ACOUSTIC_TOOLS.map((tool, idx) => (
+            <div 
+              class={`resonant-sphere-item ${idx === 0 ? "is-center" : "is-adjacent"}`}
+              data-index={idx}
+              style={`background: ${tool.sphereGradient};`}
+              role="button"
+              tabindex={idx === 0 ? "0" : "-1"}
+              aria-label={`Select ${tool.title}`}
+            >
+              {idx === 0 && (
+                <button 
+                  type="button" 
+                  id="sphere-main-play-btn" 
+                  class="sphere-play-btn" 
+                  aria-label="Play 432 Hz Sample"
+                >
+                  <svg class="sphere-icon-play" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <polygon points="6 4 20 12 6 20 6 4"></polygon>
+                  </svg>
+                  <svg class="sphere-icon-pause" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="display: none;" aria-hidden="true">
+                    <rect x="6" y="4" width="4" height="16"></rect>
+                    <rect x="14" y="4" width="4" height="16"></rect>
+                  </svg>
+                </button>
+              )}
+            </div>
+          ))}
         </div>
 
-        <div class="ab-compare-box" role="region" aria-label="Converter details">
-          <div class="ab-row">
-            <span class="ab-label">Engine</span>
-            <span class="ab-value">Natural Resample</span>
+        <!-- Metadata & Controls -->
+        <div class="sphere-meta-display">
+          <button type="button" id="sphere-prev-arrow" class="sphere-nav-arrow" aria-label="Previous tool">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+
+          <div class="sphere-text-content">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
+              <a 
+                id="sphere-active-link" 
+                href={ACOUSTIC_TOOLS[0].appUrl} 
+                class="sphere-title-tag"
+                rel="noopener noreferrer"
+              >
+                <span id="sphere-active-title">{ACOUSTIC_TOOLS[0].title}</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
+              <span id="sphere-active-subtitle" class="sphere-subtitle-badge">
+                {ACOUSTIC_TOOLS[0].subtitle}
+              </span>
+            </div>
+
+            <p id="sphere-active-desc" class="sphere-description">
+              {ACOUSTIC_TOOLS[0].description}
+            </p>
+
+            <div id="sphere-active-chips" class="sphere-spec-chips">
+              {ACOUSTIC_TOOLS[0].specs.map(spec => (
+                <span class="sphere-chip">{spec}</span>
+              ))}
+            </div>
           </div>
-          <div class="ab-row">
-            <span class="ab-label">Acoustic Pitch</span>
-            <span class="ab-value">Warm 432 Hz (-31.8 cents)</span>
-          </div>
-          <div class="ab-row">
-            <span class="ab-label">Audio Quality</span>
-            <span class="ab-value">48 kHz / Float32</span>
-          </div>
-          <div class="ab-row">
-            <span class="ab-label">Privacy</span>
-            <span class="ab-value" style="color: var(--accent-mint);">100% In Browser (Zero Upload)</span>
-          </div>
-          <div class="ab-row">
-            <span class="ab-label">Output</span>
-            <span class="ab-value">Lossless WAV</span>
-          </div>
+
+          <button type="button" id="sphere-next-arrow" class="sphere-nav-arrow" aria-label="Next tool">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
         </div>
       </div>
 
-      <!-- 2. Panel: Frequency Lab -->
-      <div class="bento-panel bento-panel-col-6">
-        <div>
-          <span class="bento-panel-tag">Frequency Lab</span>
-          <h3>Pure Tones & Binaural Beats</h3>
-          <p>
-            Dial in clean frequencies (like 432 Hz or 528 Hz), add gentle binaural pulses to guide your brainwaves into focus or sleep, and blend in organic brown noise to block out distractions.
-          </p>
+      <!-- Bottom Product Bar & App CTA -->
+      <div class="stage-footer-cluster">
+        <div class="stage-subpills-list" role="tablist" aria-label="3 Tools Selector">
+          {ACOUSTIC_TOOLS.map((tool, idx) => (
+            <button 
+              type="button" 
+              class={`subpill-tag ${idx === 0 ? "active" : ""}`}
+              data-index={idx}
+              role="tab"
+              aria-selected={idx === 0 ? "true" : "false"}
+            >
+              {tool.title.split(" (")[0]}
+            </button>
+          ))}
         </div>
 
-        <div style="background: #060D09; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1.25rem; font-family: var(--font-mono); font-size: 0.8rem; margin-bottom: 1.25rem;">
-          <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-            <span style="color: var(--text-muted);">BASE FREQUENCY</span>
-            <span style="color: var(--accent-mint);">432.00 Hz</span>
-          </div>
-          <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-            <span style="color: var(--text-muted);">BINAURAL PULSE</span>
-            <span style="color: var(--accent-mint);">7.83 Hz (Schumann)</span>
-          </div>
-          <div style="display: flex; justify-content: space-between;">
-            <span style="color: var(--text-muted);">ORGANIC NOISE</span>
-            <span style="color: var(--text-secondary);">Brown Noise</span>
-          </div>
-        </div>
-
-        <a href="https://heartz.pk-1ca.workers.dev/" class="btn btn-ghost" style="align-self: flex-start; padding-left: 0; color: var(--accent-mint);" rel="noopener noreferrer">
-          <span>Open Frequency Lab in App →</span>
-        </a>
-      </div>
-
-      <!-- 3. Panel: Guided Sessions -->
-      <div class="bento-panel bento-panel-col-6">
-        <div>
-          <span class="bento-panel-tag">Instant Sessions</span>
-          <h3>Ready-to-Play Soundscapes</h3>
-          <p>
-            Curated sonic environments designed for deep work, calming anxiety, and restorative sleep. Every session starts and ends with gentle volume fades so nothing ever startles your ears.
-          </p>
-        </div>
-
-        <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.25rem;">
-          <div style="display: flex; align-items: center; justify-content: space-between; background: #060D09; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
-            <div style="display: flex; align-items: center; gap: 0.6rem;">
-              <span style="color: var(--accent-mint); font-size: 0.9rem;">●</span>
-              <span style="font-size: 0.875rem; font-weight: 500;">Deep Ground (432 Hz)</span>
-            </div>
-            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">Binaural Brown Noise</span>
-          </div>
-          <div style="display: flex; align-items: center; justify-content: space-between; background: #060D09; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
-            <div style="display: flex; align-items: center; gap: 0.6rem;">
-              <span style="color: var(--accent-mint); font-size: 0.9rem;">●</span>
-              <span style="font-size: 0.875rem; font-weight: 500;">Ocean Waves (7.83 Hz)</span>
-            </div>
-            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">Theta Meditation</span>
-          </div>
-        </div>
-
-        <a href="https://heartz.pk-1ca.workers.dev/" class="btn btn-ghost" style="align-self: flex-start; padding-left: 0; color: var(--accent-mint);" rel="noopener noreferrer">
-          <span>Browse All Sessions in App →</span>
+        <a 
+          id="stage-direct-cta"
+          href={ACOUSTIC_TOOLS[0].appUrl} 
+          class="btn btn-primary stage-launch-app-btn" 
+          rel="noopener noreferrer"
+        >
+          <span>{ACOUSTIC_TOOLS[0].ctaLabel}</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
         </a>
       </div>
     </div>
@@ -149,78 +194,235 @@
 </section>
 
 <script>
-  // Pure inline audio playback right inside the card (Zero scrolling, zero page jumping!)
-  let inlineAudio: HTMLAudioElement | null = null;
-  let activeType: '432' | '440' | null = null;
+  const stageEl = document.getElementById("majestic-stage");
+  const rawData = stageEl?.getAttribute("data-tools");
+  const TOOLS = rawData ? JSON.parse(rawData) : [];
+  const TOTAL = TOOLS.length; // Exactly 3
 
-  const btn432 = document.getElementById('inline-432-btn');
-  const btn440 = document.getElementById('inline-440-btn');
-  const label432 = document.getElementById('inline-432-label');
-  const label440 = document.getElementById('inline-440-label');
+  let activeIndex = 0;
+  let audioInstance: HTMLAudioElement | null = null;
+  let isPlaying = false;
 
-  function updateIcons() {
-    if (btn432) {
-      const playSvg = btn432.querySelector('.inline-play-icon') as HTMLElement;
-      const pauseSvg = btn432.querySelector('.inline-pause-icon') as HTMLElement;
-      if (activeType === '432') {
-        if (playSvg) playSvg.style.display = 'none';
-        if (pauseSvg) pauseSvg.style.display = 'inline-block';
-        if (label432) label432.textContent = 'Pause 432 Hz';
+  const trackEl = document.getElementById("spheres-track");
+  const prevBtn = document.getElementById("sphere-prev-arrow");
+  const nextBtn = document.getElementById("sphere-next-arrow");
+  const titleEl = document.getElementById("sphere-active-title");
+  const subtitleEl = document.getElementById("sphere-active-subtitle");
+  const descEl = document.getElementById("sphere-active-desc");
+  const chipsEl = document.getElementById("sphere-active-chips");
+  const linkEl = document.getElementById("sphere-active-link");
+  const ctaBtn = document.getElementById("stage-direct-cta");
+  const pillarBtns = document.querySelectorAll<HTMLButtonElement>(".stage-pillar-btn");
+  const subpills = document.querySelectorAll<HTMLButtonElement>(".subpill-tag");
+
+  function getPlayButton(): HTMLButtonElement | null {
+    return document.getElementById("sphere-main-play-btn") as HTMLButtonElement | null;
+  }
+
+  function updatePlayIcon(playing: boolean) {
+    const btn = getPlayButton();
+    if (!btn) return;
+    const playSvg = btn.querySelector(".sphere-icon-play") as HTMLElement;
+    const pauseSvg = btn.querySelector(".sphere-icon-pause") as HTMLElement;
+    if (playSvg && pauseSvg) {
+      if (playing) {
+        playSvg.style.display = "none";
+        pauseSvg.style.display = "inline-block";
+        btn.setAttribute("aria-label", `Pause ${TOOLS[activeIndex]?.title || "Audio"}`);
       } else {
-        if (playSvg) playSvg.style.display = 'inline-block';
-        if (pauseSvg) pauseSvg.style.display = 'none';
-        if (label432) label432.textContent = 'Play 432 Hz Sample';
+        playSvg.style.display = "inline-block";
+        pauseSvg.style.display = "none";
+        btn.setAttribute("aria-label", `Play ${TOOLS[activeIndex]?.title || "Audio"}`);
       }
     }
 
-    if (btn440) {
-      const playSvg = btn440.querySelector('.inline-play-icon') as HTMLElement;
-      const pauseSvg = btn440.querySelector('.inline-pause-icon') as HTMLElement;
-      if (activeType === '440') {
-        if (playSvg) playSvg.style.display = 'none';
-        if (pauseSvg) pauseSvg.style.display = 'inline-block';
-        if (label440) label440.textContent = 'Pause 440 Hz';
-      } else {
-        if (playSvg) playSvg.style.display = 'inline-block';
-        if (pauseSvg) pauseSvg.style.display = 'none';
-        if (label440) label440.textContent = '440 Hz Original (A/B)';
-      }
+    const centerSphere = trackEl?.querySelector(`.resonant-sphere-item[data-index="${activeIndex}"]`);
+    if (centerSphere) {
+      centerSphere.classList.toggle("is-playing", playing);
     }
   }
 
-  function playInline(type: '432' | '440') {
-    const url = type === '432' 
-      ? '/audio/converter_432hz_retuned_preview.wav' 
-      : '/audio/converter_440hz_original_preview.wav';
+  function stopAudio() {
+    if (audioInstance) {
+      audioInstance.pause();
+      audioInstance.currentTime = 0;
+    }
+    isPlaying = false;
+    updatePlayIcon(false);
+  }
 
-    if (activeType === type && inlineAudio) {
-      inlineAudio.pause();
-      activeType = null;
-      updateIcons();
+  function togglePlay() {
+    const curTool = TOOLS[activeIndex];
+    if (!curTool) return;
+
+    if (isPlaying && audioInstance) {
+      stopAudio();
       return;
     }
 
-    if (inlineAudio) {
-      inlineAudio.pause();
+    if (audioInstance) {
+      audioInstance.pause();
     }
 
-    inlineAudio = new Audio(url);
-    inlineAudio.volume = 0.4;
-    inlineAudio.addEventListener('ended', () => {
-      activeType = null;
-      updateIcons();
+    audioInstance = new Audio(curTool.audioUrl);
+    audioInstance.volume = 0.45;
+    audioInstance.addEventListener("ended", () => {
+      isPlaying = false;
+      updatePlayIcon(false);
     });
 
-    inlineAudio.play().then(() => {
-      activeType = type;
-      updateIcons();
-    }).catch(e => {
-      console.warn('Inline audio play prevented:', e);
-      activeType = null;
-      updateIcons();
+    audioInstance.play().then(() => {
+      isPlaying = true;
+      updatePlayIcon(true);
+    }).catch(err => {
+      console.warn("Audio playback prevented:", err);
+      isPlaying = false;
+      updatePlayIcon(false);
     });
   }
 
-  btn432?.addEventListener('click', () => playInline('432'));
-  btn440?.addEventListener('click', () => playInline('440'));
+  function renderSpheresClasses() {
+    if (!trackEl) return;
+    const items = trackEl.querySelectorAll<HTMLElement>(".resonant-sphere-item");
+
+    items.forEach((item) => {
+      const idx = Number(item.getAttribute("data-index"));
+      // In a 3-item circular carousel, diff is -1 (left), 0 (center), or 1 (right)
+      let diff = idx - activeIndex;
+      if (diff === 2) diff = -1;
+      if (diff === -2) diff = 1;
+
+      item.className = "resonant-sphere-item";
+      item.removeAttribute("tabindex");
+
+      if (diff === 0) {
+        item.classList.add("is-center");
+        item.setAttribute("tabindex", "0");
+        if (isPlaying) item.classList.add("is-playing");
+
+        // Ensure play button exists on center item
+        if (!item.querySelector("#sphere-main-play-btn")) {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.id = "sphere-main-play-btn";
+          btn.className = "sphere-play-btn";
+          btn.setAttribute("aria-label", `Play ${TOOLS[activeIndex]?.title || "Audio"}`);
+          btn.innerHTML = `
+            <svg class="sphere-icon-play" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <polygon points="6 4 20 12 6 20 6 4"></polygon>
+            </svg>
+            <svg class="sphere-icon-pause" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="display: none;" aria-hidden="true">
+              <rect x="6" y="4" width="4" height="16"></rect>
+              <rect x="14" y="4" width="4" height="16"></rect>
+            </svg>
+          `;
+          btn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            togglePlay();
+          });
+          item.appendChild(btn);
+        }
+      } else {
+        // Remove play button if moved from center
+        const oldBtn = item.querySelector("#sphere-main-play-btn");
+        if (oldBtn) oldBtn.remove();
+        item.classList.add("is-adjacent");
+      }
+
+      // Reorder items in flex layout: left (-1 -> order 1), center (0 -> order 2), right (1 -> order 3)
+      item.style.order = String(diff + 2);
+    });
+
+    updatePlayIcon(isPlaying);
+  }
+
+  function setActiveIndex(newIdx: number) {
+    if (newIdx === activeIndex) return;
+    stopAudio();
+    activeIndex = (newIdx + TOTAL) % TOTAL;
+    const curTool = TOOLS[activeIndex];
+    if (!curTool) return;
+
+    renderSpheresClasses();
+
+    if (titleEl) titleEl.textContent = curTool.title;
+    if (subtitleEl) subtitleEl.textContent = curTool.subtitle;
+    if (descEl) descEl.textContent = curTool.description;
+    if (linkEl) linkEl.setAttribute("href", curTool.appUrl);
+
+    if (chipsEl) {
+      chipsEl.innerHTML = curTool.specs.map((s: string) => `<span class="sphere-chip">${s}</span>`).join("");
+    }
+
+    // Top pillar buttons
+    pillarBtns.forEach(btn => {
+      const idx = Number(btn.getAttribute("data-index"));
+      const active = idx === activeIndex;
+      btn.classList.toggle("active", active);
+      btn.setAttribute("aria-selected", String(active));
+    });
+
+    // Bottom subpills
+    subpills.forEach((p, i) => {
+      const active = i === activeIndex;
+      p.classList.toggle("active", active);
+      p.setAttribute("aria-selected", String(active));
+    });
+
+    // Primary CTA button
+    if (ctaBtn) {
+      ctaBtn.setAttribute("href", curTool.appUrl);
+      const span = ctaBtn.querySelector("span");
+      if (span) span.textContent = curTool.ctaLabel;
+    }
+  }
+
+  // Prev / Next arrows
+  prevBtn?.addEventListener("click", () => setActiveIndex(activeIndex - 1));
+  nextBtn?.addEventListener("click", () => setActiveIndex(activeIndex + 1));
+
+  // Direct click on spheres
+  trackEl?.addEventListener("click", (e) => {
+    const target = (e.target as HTMLElement).closest(".resonant-sphere-item");
+    if (!target) return;
+    const idx = Number(target.getAttribute("data-index"));
+    if (!isNaN(idx) && idx !== activeIndex) {
+      setActiveIndex(idx);
+    }
+  });
+
+  // Top Pillar clicks
+  pillarBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const idx = Number(btn.getAttribute("data-index"));
+      if (!isNaN(idx)) setActiveIndex(idx);
+    });
+  });
+
+  // Bottom Subpill clicks
+  subpills.forEach((pill, idx) => {
+    pill.addEventListener("click", () => setActiveIndex(idx));
+  });
+
+  // Keyboard navigation
+  trackEl?.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      setActiveIndex(activeIndex - 1);
+    } else if (e.key === "ArrowRight") {
+      e.preventDefault();
+      setActiveIndex(activeIndex + 1);
+    } else if (e.key === " " || e.key === "Enter") {
+      e.preventDefault();
+      togglePlay();
+    }
+  });
+
+  // Initial setup
+  renderSpheresClasses();
+  const initialPlayBtn = getPlayButton();
+  initialPlayBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    togglePlay();
+  });
 </script>

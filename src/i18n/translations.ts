@@ -1,4 +1,4 @@
-﻿export type Lang = "pl" | "en";
+export type Lang = "pl" | "en";
 
 export const translations = {
   pl: {
@@ -142,12 +142,12 @@ export const translations = {
       intro: "Żadne presety, historia odsłuchu ani importowane pliki audio nie są wysyłane do chmury. Wykorzystujemy natywną przeglądarkową bazę IndexedDB.",
       points: [
         {
-          title: "Zero kont centralnych i profilowania danych",
+          title: "Zero profilowania danych odsłuchowych",
           desc: "Twoje intymne nawyki odsłuchowe i stworzone presety nigdy nie trafiają na zewnętrzne farmy serwerów.",
         },
         {
-          title: "Błyskawiczne odzyskiwanie sesji",
-          desc: "Wracasz do aplikacji i natychmiast kontynuujesz pracę — z zerowym opóźnieniem sieciowym i bez logowania.",
+          title: "Błyskawiczne logowanie mailem",
+          desc: "Wracasz do aplikacji i natychmiast kontynuujesz pracę z prostym logowaniem przez e-mail.",
         },
         {
           title: "Niezależny eksport presetów do JSON",
@@ -328,12 +328,12 @@ export const translations = {
     signalFlow: {
       sectionTag: "Circuit Logic",
       headline: "Three-stage signal flow with zero external servers",
-      intro: "An architecture optimized for instant utility. Zero signups, zero ads, full DSP engine power directly in your browser.",
+      intro: "An architecture optimized for instant utility. Instant email login, 0 subscriptions, 0 ads.",
       step1: {
         num: "01",
         title: "Select operational engine",
         desc: "Open the web app and choose your path: a curated calming session, laboratory synthesis, or dropping your audio file into the converter.",
-        hint: "No signup required",
+        hint: "Instant email access",
       },
       step2: {
         num: "02",
@@ -416,7 +416,7 @@ export const translations = {
     contact: {
       sectionTag: "Build Your Resonance Field",
       headline: "Immerse in resonance without friction.",
-      intro: "Launch the full HEARTz application in your browser and experience surgical acoustic design without signups or compromises.",
+      intro: "Launch the full HEARTz application in your browser and experience surgical acoustic design with simple email login.",
       openAppBtn: "Launch Free Synthesizer (Web Alpha)",
       toastText: "✓ Copied email to clipboard!",
       footerCopyright: "© 2026 HEARTz. All rights reserved.",

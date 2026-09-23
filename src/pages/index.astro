@@ -1,4 +1,4 @@
-﻿---
+---
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
@@ -9,6 +9,12 @@ import LibraryShowcase from "../components/LibraryShowcase.astro";
 import ArchitecturePrivacy from "../components/ArchitecturePrivacy.astro";
 import Faq from "../components/Faq.astro";
 import ContactFooter from "../components/ContactFooter.astro";
+
+// Production canonical URL is configuration-driven via SITE environment variable
+const siteUrl = import.meta.env.SITE;
+const canonicalUrl = siteUrl ? new URL(Astro.url.pathname, siteUrl).href : undefined;
+const ogImageUrl = siteUrl ? new URL("/og-image.png", siteUrl).href : "/og-image.png";
+const logoUrl = siteUrl ? new URL("/logo.png", siteUrl).href : "/logo.png";
 ---
 
 <!DOCTYPE html>
@@ -16,51 +22,120 @@ import ContactFooter from "../components/ContactFooter.astro";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="noindex, nofollow" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     
     <title>HEARTz — Pure Sound for Focus, Calm & 432 Hz Music</title>
     <meta 
       name="description" 
-      content="Play grounding binaural brown noise, pure 432 Hz frequencies, and retune songs in your browser. 100% private, free, no signup required." 
+      content="A warm, immersive acoustic experience. Play grounding binaural brown noise, pure frequencies, and retune any song to 432 Hz in 3 seconds. 100% private in your browser." 
     />
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
 
     <!-- Favicon & Icons -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="theme-color" content="#040705" />
+    <link rel="icon" type="image/png" href="/brand/heartz-app-icon.png" />
+    <link rel="apple-touch-icon" href="/brand/heartz-app-icon.png" />
+    <meta name="theme-color" content="#2C0515" />
 
     <!-- Open Graph & Social -->
+    <meta property="og:site_name" content="HEARTz" />
     <meta property="og:title" content="HEARTz — Pure Sound for Focus, Calm & 432 Hz Music" />
-    <meta property="og:description" content="Play grounding frequencies, soothing binaural brown noise, or retune any song to 432 Hz. Free, private, and instant in your browser." />
+    <meta property="og:description" content="A warm, immersive acoustic experience. Play grounding binaural brown noise, pure frequencies, and retune any song to 432 Hz in 3 seconds. 100% private in your browser." />
     <meta property="og:type" content="website" />
+    {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
     <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="HEARTz — Pure Sound for Focus, Calm & 432 Hz Music" />
 
-    <!-- Google Fonts: Inter -->
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="HEARTz — Pure Sound for Focus, Calm & 432 Hz Music" />
+    <meta name="twitter:description" content="A warm, immersive acoustic experience. Play grounding binaural brown noise, pure frequencies, and retune any song to 432 Hz in 3 seconds. 100% private in your browser." />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content="HEARTz Sound Generator & 432 Hz Converter" />
+
+    <!-- Google Fonts: Manrope (Official HEARTz Brand Font, non-blocking) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" />
+    </noscript>
 
-    <!-- Schema.org JSON-LD -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "HEARTz",
-        "inLanguage": "en",
-        "applicationCategory": "MultimediaApplication",
-        "operatingSystem": "All",
-        "description": "Pure sound for focus and calm. Play binaural brown noise, pure frequencies, and retune music to 432 Hz in your browser.",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
+    <!-- Schema.org JSON-LD (Semantic structured data for HEARTz) -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "HEARTz",
+          "url": "https://heartz.pk-1ca.workers.dev/",
+          "applicationCategory": "MultimediaApplication",
+          "operatingSystem": "All",
+          "browserRequirements": "Requires modern browser with Web Audio API support",
+          "description": "Pure sound for focus and calm. Play binaural brown noise, pure frequencies, and retune music to 432 Hz with 0 cloud uploads.",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+          },
+          "featureList": [
+            "432 Hz Song Converter with Natural Resample",
+            "Binaural Brown Noise Generator",
+            "Pure Tone Synthesizer (432 Hz, 528 Hz, 7.83 Hz)",
+            "Lossless uncompressed WAV export",
+            "100% client-side 0-upload privacy"
+          ]
         },
-        "author": {
-          "@type": "Person",
-          "name": "Piotr",
-          "url": "https://aitificer.com/"
+        {
+          "@type": "Organization",
+          "name": "HEARTz",
+          "url": siteUrl || "https://heartz.pk-1ca.workers.dev/",
+          "logo": logoUrl
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What makes 432 Hz different from standard 440 Hz?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Standard music is tuned to A4 = 440 Hz. A 432 Hz tuning is slightly lower and warmer. Many listeners, musicians, and creators find it softer, more organic, and noticeably less tiring for extended focus or relaxation sessions."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do I need headphones to use this?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "For pure frequencies, relaxing noises, and retuned music, standard speakers or earbuds sound great. For binaural beats (like our ocean wave session), stereo headphones are required so each ear receives a slightly different frequency."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Why do you recommend starting at low volume?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Pure sound waves carry concentrated acoustic energy, even when they feel gentle. Starting at 20–30% volume protects your hearing and lets your ears ease into the sound comfortably."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is HEARTz free and private?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. HEARTz runs 100% in your browser with simple email login, 0 subscriptions, and 0 ads. Your audio files and music never leave your device."
+              }
+            }
+          ]
         }
-      }
-    </script>
+      ]
+    })} />
   </head>
   <body>
     <a href="#start" class="skip-link">Skip to main content</a>

@@ -1,0 +1,26 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="512" height="512" rx="104" fill="#040705" />
+  
+  <!-- Subtle radial glow -->
+  <radialGradient id="logoGlow" cx="256" cy="220" r="220" gradientUnits="userSpaceOnUse">
+    <stop offset="0%" stop-color="#10B981" stop-opacity="0.2" />
+    <stop offset="100%" stop-color="#040705" stop-opacity="0" />
+  </radialGradient>
+  <rect width="512" height="512" rx="104" fill="url(#logoGlow)" />
+
+  <!-- Inner border -->
+  <rect x="16" y="16" width="480" height="480" rx="92" stroke="#182B21" stroke-width="4" />
+
+  <!-- Center brand mark box -->
+  <g transform="translate(146, 110)">
+    <rect width="220" height="220" rx="48" fill="#09120D" stroke="#10B981" stroke-width="6" />
+    <!-- Acoustic sine / heartz wave -->
+    <path d="M30 110h35l20-55 35 110 35-110 35 110 20-55h35" stroke="#34D399" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+
+  <!-- Brand text -->
+  <text x="256" y="405" fill="#F1F5F2" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif" font-size="56" font-weight="800" letter-spacing="-0.03em">
+    HEARTz
+  </text>
+</svg>

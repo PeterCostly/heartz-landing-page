@@ -1,0 +1,60 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#040705" />
+  
+  <!-- Subtle ambient radial gradients -->
+  <radialGradient id="glowTop" cx="600" cy="0" r="500" gradientUnits="userSpaceOnUse">
+    <stop offset="0%" stop-color="#10B981" stop-opacity="0.18" />
+    <stop offset="100%" stop-color="#040705" stop-opacity="0" />
+  </radialGradient>
+  <rect width="1200" height="630" fill="url(#glowTop)" />
+
+  <!-- Inner subtle border -->
+  <rect x="24" y="24" width="1152" height="582" rx="20" stroke="#182B21" stroke-width="2" />
+
+  <!-- Brand badge -->
+  <g transform="translate(80, 80)">
+    <rect width="52" height="52" rx="12" fill="#09120D" stroke="#10B981" stroke-width="2" />
+    <!-- Waveform icon inside brand mark -->
+    <path d="M10 26h6l4-12 7 24 7-24 7 24 4-12h7" stroke="#34D399" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="68" y="36" fill="#F1F5F2" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif" font-size="32" font-weight="800" letter-spacing="-0.03em">HEARTz</text>
+  </g>
+
+  <!-- Pill tag -->
+  <g transform="translate(80, 165)">
+    <rect width="360" height="34" rx="17" fill="rgba(16, 185, 129, 0.1)" stroke="rgba(16, 185, 129, 0.3)" stroke-width="1" />
+    <circle cx="20" cy="17" r="4" fill="#34D399" />
+    <text x="34" y="22" fill="#34D399" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="600" letter-spacing="0.04em">IN-BROWSER AUDIO · ZERO SIGNUP</text>
+  </g>
+
+  <!-- Headline -->
+  <text x="80" y="270" fill="#F1F5F2" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif" font-size="56" font-weight="800" letter-spacing="-0.04em">
+    Pure sound for
+  </text>
+  <text x="80" y="335" fill="#34D399" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif" font-size="56" font-weight="800" letter-spacing="-0.04em">
+    deep focus and calm.
+  </text>
+
+  <!-- Subhead -->
+  <text x="80" y="395" fill="#8BA194" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="400">
+    Play grounding binaural brown noise, pure 432 Hz frequencies,
+  </text>
+  <text x="80" y="425" fill="#8BA194" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="400">
+    or retune any song to 432 Hz. 100% private in your browser.
+  </text>
+
+  <!-- Visualizer waveform decorative box -->
+  <g transform="translate(80, 480)">
+    <rect width="1040" height="70" rx="12" fill="#050B08" stroke="#182B21" stroke-width="1" />
+    <!-- Waveform center guide line -->
+    <line x1="20" y1="35" x2="1020" y2="35" stroke="rgba(139, 161, 148, 0.15)" stroke-width="1" stroke-dasharray="4 4" />
+    
+    <!-- Waveform path -->
+    <path d="M 20 35 C 100 35, 140 10, 200 35 C 260 60, 300 15, 360 35 C 420 55, 480 5, 540 35 C 600 65, 660 10, 720 35 C 780 60, 840 20, 900 35 C 960 50, 990 35, 1020 35" stroke="#10B981" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.4" />
+    <path d="M 20 35 C 80 35, 120 18, 180 35 C 240 52, 280 20, 340 35 C 400 50, 460 15, 520 35 C 580 55, 640 18, 700 35 C 760 52, 820 22, 880 35 C 940 48, 980 35, 1020 35" stroke="#34D399" stroke-width="2.5" stroke-linecap="round" fill="none" />
+  </g>
+
+  <!-- Footer metadata row -->
+  <g transform="translate(80, 580)">
+    <text x="0" y="0" fill="#5C7064" font-family="'JetBrains Mono', monospace" font-size="14">100% CLIENT-SIDE WEB AUDIO · ZERO CLOUD UPLOADS</text>
+  </g>
+</svg>

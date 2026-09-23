@@ -1,0 +1,29 @@
+# HEARTz — Browser-Based Sound Generator & 432 Hz Audio Converter
+
+> Note: This document provides structured, factual summary data intended for automated parsing. It is an optional resource and does not constitute a search engine ranking factor.
+
+## Overview
+HEARTz is a client-side web audio application providing tone generation, sound masking, and pitch retuning directly inside modern web browsers. It runs without user registration, external audio processing servers, or telemetry tracking.
+
+## Technical Specifications & Features
+
+### 1. 432 Hz Music Converter
+- **Function**: Adjusts the reference pitch of uploaded audio from concert pitch (A4 = 440 Hz) to Verdi tuning (A4 = 432 Hz).
+- **Pitch Shift**: -31.767 cents (ratio ~0.981818).
+- **DSP Engine**: Client-side resampling and pitch conversion using Web Audio API buffer routines.
+- **Export Format**: Lossless uncompressed 16-bit / 48 kHz stereo WAV.
+- **Privacy Model**: All decoding, processing, and encoding occur entirely in local browser RAM. No audio data is uploaded to remote servers.
+
+### 2. Frequency Laboratory & Soundscapes
+- **Oscillator Types**: Pure sinusoidal tones at user-defined frequencies (including 432.00 Hz and 528.00 Hz).
+- **Binaural Signal**: Delivers separate sinusoidal frequencies to left and right channels to produce perceptual binaural difference tones (e.g., 7.83 Hz difference tone over a 432 Hz carrier). Note: Requires stereo headphones for stereo channel separation. Individual subjective responses vary; binaural audio is not a medical treatment for cognitive, psychological, or neurological conditions.
+- **Sound Masking**: Synthesized brown noise and pink noise filtered to provide broad-spectrum acoustic masking against ambient environmental sounds.
+
+### 3. Client-Side Data Storage
+- **Preset Persistence**: User configurations are saved locally via browser IndexedDB.
+- **Export/Import**: Settings can be exported and imported as JSON.
+- **Tracking / Analytics**: None.
+
+## System Resources
+- Web Application: https://heartz.pk-1ca.workers.dev/
+- Contact: contact@aitificer.com

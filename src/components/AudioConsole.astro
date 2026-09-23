@@ -1,4 +1,4 @@
-﻿---
+---
 const TRACKS = [
   {
     id: "deep-ground",
@@ -49,6 +49,7 @@ const TRACKS = [
 ---
 <section id="demo-player" class="player-stage-section" aria-labelledby="player-heading">
   <div class="container player-stage-wrapper">
+    <h2 id="player-heading" class="sr-only">Interactive Audio Console & Sound Generator</h2>
     <div 
       id="hero-console" 
       class="acoustic-console-card" 
@@ -73,6 +74,7 @@ const TRACKS = [
             class={`pill-tab ${idx === 0 ? "active" : ""}`} 
             role="tab" 
             aria-selected={idx === 0 ? "true" : "false"} 
+            tabindex={idx === 0 ? "0" : "-1"}
             data-index={idx}
           >
             <span>●</span> {track.title}
@@ -98,7 +100,17 @@ const TRACKS = [
       </div>
 
       <!-- Scrubber -->
-      <div id="timeline-scrubber-track" class="timeline-scrubber" role="progressbar" aria-label="Audio progress" tabindex="0">
+      <div 
+        id="timeline-scrubber-track" 
+        class="timeline-scrubber" 
+        role="progressbar" 
+        aria-label="Audio progress" 
+        aria-valuenow="0" 
+        aria-valuemin="0" 
+        aria-valuemax="100" 
+        aria-valuetext="0 percent" 
+        tabindex="0"
+      >
         <div id="timeline-progress-fill" class="timeline-progress-fill"></div>
       </div>
 
@@ -186,6 +198,10 @@ const TRACKS = [
         const pct = Math.min(100, Math.max(0, (cur / dur) * 100));
         if (progressFill) progressFill.style.width = `${pct}%`;
         if (timeDisplay) timeDisplay.textContent = `${formatTime(cur)} / ${formatTime(dur)}`;
+        if (scrubberTrack) {
+          scrubberTrack.setAttribute("aria-valuenow", Math.round(pct).toString());
+          scrubberTrack.setAttribute("aria-valuetext", `${formatTime(cur)} of ${formatTime(dur)}`);
+        }
       });
 
       audioEl.addEventListener("ended", () => {
@@ -299,6 +315,10 @@ const TRACKS = [
     isPlaying = false;
     updatePlayBtn(false);
     if (progressFill) progressFill.style.width = "0%";
+    if (scrubberTrack) {
+      scrubberTrack.setAttribute("aria-valuenow", "0");
+      scrubberTrack.setAttribute("aria-valuetext", "0 percent");
+    }
     if (timeDisplay && TRACKS[currentIndex]) {
       timeDisplay.textContent = `00:00 / ${formatTime(TRACKS[currentIndex].duration)}`;
     }
@@ -323,6 +343,7 @@ const TRACKS = [
       const active = i === idx;
       p.classList.toggle("active", active);
       p.setAttribute("aria-selected", String(active));
+      p.setAttribute("tabindex", active ? "0" : "-1");
     });
 
     if (announcer) announcer.textContent = `Selected: ${track.title}`;
@@ -339,12 +360,59 @@ const TRACKS = [
     btn.addEventListener("click", () => selectTrack(idx));
   });
 
+  // Keyboard navigation for preset tablist
+  const presetPillsRow = document.getElementById("console-preset-pills");
+  presetPillsRow?.addEventListener("keydown", (e: KeyboardEvent) => {
+    if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+      e.preventDefault();
+      const count = TRACKS.length;
+      const nextIdx = e.key === "ArrowRight" 
+        ? (currentIndex + 1) % count 
+        : (currentIndex - 1 + count) % count;
+      selectTrack(nextIdx);
+      const targetPill = presetPillsRow.querySelector<HTMLButtonElement>(`[data-index="${nextIdx}"]`);
+      targetPill?.focus();
+    }
+  });
+
   scrubberTrack?.addEventListener("click", (e) => {
     if (!audioEl || !scrubberTrack || !TRACKS[currentIndex]) return;
     const rect = scrubberTrack.getBoundingClientRect();
     const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
     const dur = audioEl.duration || TRACKS[currentIndex].duration;
     audioEl.currentTime = ratio * dur;
+  });
+
+  // Keyboard navigation for scrubber progressbar
+  scrubberTrack?.addEventListener("keydown", (e: KeyboardEvent) => {
+    if (!audioEl || !TRACKS[currentIndex]) return;
+    const dur = audioEl.duration || TRACKS[currentIndex].duration;
+    let newTime = audioEl.currentTime;
+
+    if (e.key === "ArrowRight" || e.key === "ArrowUp") {
+      e.preventDefault();
+      newTime = Math.min(dur, newTime + 2);
+    } else if (e.key === "ArrowLeft" || e.key === "ArrowDown") {
+      e.preventDefault();
+      newTime = Math.max(0, newTime - 2);
+    } else if (e.key === "Home") {
+      e.preventDefault();
+      newTime = 0;
+    } else if (e.key === "End") {
+      e.preventDefault();
+      newTime = dur;
+    } else {
+      return;
+    }
+
+    audioEl.currentTime = newTime;
+    const pct = Math.min(100, Math.max(0, (newTime / dur) * 100));
+    if (progressFill) progressFill.style.width = `${pct}%`;
+    if (timeDisplay) timeDisplay.textContent = `${formatTime(newTime)} / ${formatTime(dur)}`;
+    if (scrubberTrack) {
+      scrubberTrack.setAttribute("aria-valuenow", Math.round(pct).toString());
+      scrubberTrack.setAttribute("aria-valuetext", `${formatTime(newTime)} of ${formatTime(dur)}`);
+    }
   });
 
   volumeSlider?.addEventListener("input", (e) => {
@@ -364,10 +432,15 @@ const TRACKS = [
     }
   });
 
+  let cachedW = 0;
+  let cachedH = 0;
+
   function resizeWaveCanvas() {
     if (!canvas || !canvasCtx) return;
     const rect = canvas.getBoundingClientRect();
     const dpr = window.devicePixelRatio || 1;
+    cachedW = rect.width;
+    cachedH = rect.height;
     canvas.width = rect.width * dpr;
     canvas.height = rect.height * dpr;
     canvasCtx.scale(dpr, dpr);
@@ -403,17 +476,17 @@ const TRACKS = [
   }
 
   function drawWave(amplitude: number) {
-    if (!canvas || !canvasCtx) return;
+    if (!canvas || !canvasCtx || cachedW === 0) return;
     const ctx = canvasCtx;
-    const w = canvas.getBoundingClientRect().width;
-    const h = canvas.getBoundingClientRect().height;
+    const w = cachedW;
+    const h = cachedH;
     ctx.clearRect(0, 0, w, h);
 
     const midY = h / 2;
     const baseAmp = 18 * amplitude;
 
     ctx.beginPath();
-    ctx.strokeStyle = "rgba(139, 161, 148, 0.12)";
+    ctx.strokeStyle = "rgba(231, 146, 127, 0.16)";
     ctx.lineWidth = 1;
     ctx.setLineDash([3, 3]);
     ctx.moveTo(0, midY);
@@ -421,8 +494,9 @@ const TRACKS = [
     ctx.stroke();
     ctx.setLineDash([]);
 
+    // Outer soft glow wave (Crimson / Violet warmth)
     ctx.beginPath();
-    ctx.strokeStyle = "rgba(16, 185, 129, 0.25)";
+    ctx.strokeStyle = "rgba(175, 10, 37, 0.28)";
     ctx.lineWidth = 4;
     for (let x = 0; x <= w; x += 3) {
       const nx = x / w;
@@ -433,9 +507,16 @@ const TRACKS = [
     }
     ctx.stroke();
 
+    // Main sharp frequency spectrum wave
+    const grad = ctx.createLinearGradient(0, 0, w, 0);
+    grad.addColorStop(0, '#AF0A25');    // Crimson
+    grad.addColorStop(0.35, '#F86934'); // Coral
+    grad.addColorStop(0.7, '#F9A649');  // Warm Orange
+    grad.addColorStop(1, '#F7D86C');    // Yellow
+
     ctx.beginPath();
-    ctx.strokeStyle = amplitude > 0.05 ? "#34D399" : "rgba(139, 161, 148, 0.4)";
-    ctx.lineWidth = 2;
+    ctx.strokeStyle = amplitude > 0.05 ? grad : "rgba(231, 146, 127, 0.4)";
+    ctx.lineWidth = 2.2;
     for (let x = 0; x <= w; x += 2) {
       const nx = x / w;
       const envelope = Math.sin(nx * Math.PI);
