@@ -16,7 +16,7 @@ HEARTz is a client-side web audio application providing tone generation, sound m
 
 ### 2. Frequency Laboratory & Soundscapes
 - **Oscillator Types**: Pure sinusoidal tones at user-defined frequencies (including 432.00 Hz and 528.00 Hz).
-- **Binaural Signal**: Delivers separate sinusoidal frequencies to left and right channels to produce perceptual binaural difference tones (e.g., 7.83 Hz difference tone over a 432 Hz carrier). Note: Requires stereo headphones for stereo channel separation. Individual subjective responses vary; binaural audio is not a medical treatment for cognitive, psychological, or neurological conditions.
+- **Binaural Signal**: Delivers separate sinusoidal frequencies to left and right channels to produce a perceptual binaural difference tone (e.g., a 7.83 Hz difference over a 432 Hz carrier). Stereo headphones preserve the intended channel separation. Keep the device volume comfortable and stop if listening feels uncomfortable.
 - **Sound Masking**: Synthesized brown noise and pink noise filtered to provide broad-spectrum acoustic masking against ambient environmental sounds.
 
 ### 3. Client-Side Data Storage

@@ -9,12 +9,14 @@ import LibraryShowcase from "../components/LibraryShowcase.astro";
 import ArchitecturePrivacy from "../components/ArchitecturePrivacy.astro";
 import Faq from "../components/Faq.astro";
 import ContactFooter from "../components/ContactFooter.astro";
+import { getAppUrl } from "../config/appLinks";
 
 // Production canonical URL is configuration-driven via SITE environment variable
 const siteUrl = import.meta.env.SITE;
 const canonicalUrl = siteUrl ? new URL(Astro.url.pathname, siteUrl).href : undefined;
 const ogImageUrl = siteUrl ? new URL("/og-image.png", siteUrl).href : "/og-image.png";
 const logoUrl = siteUrl ? new URL("/logo.png", siteUrl).href : "/logo.png";
+const appHomeUrl = getAppUrl("home");
 ---
 
 <!DOCTYPE html>
@@ -72,7 +74,7 @@ const logoUrl = siteUrl ? new URL("/logo.png", siteUrl).href : "/logo.png";
         {
           "@type": "WebApplication",
           "name": "HEARTz",
-          "url": "https://heartz.pk-1ca.workers.dev/",
+          "url": appHomeUrl,
           "applicationCategory": "MultimediaApplication",
           "operatingSystem": "All",
           "browserRequirements": "Requires modern browser with Web Audio API support",
@@ -94,7 +96,7 @@ const logoUrl = siteUrl ? new URL("/logo.png", siteUrl).href : "/logo.png";
         {
           "@type": "Organization",
           "name": "HEARTz",
-          "url": siteUrl || "https://heartz.pk-1ca.workers.dev/",
+          "url": siteUrl || appHomeUrl,
           "logo": logoUrl
         },
         {

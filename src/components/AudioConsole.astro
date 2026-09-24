@@ -1,4 +1,6 @@
 ---
+import { getAppUrl } from "../config/appLinks";
+
 const TRACKS = [
   {
     id: "deep-ground",
@@ -8,6 +10,8 @@ const TRACKS = [
     url: "/audio/deep_ground_10s.wav",
     duration: 10,
     badge: "432 Hz · Brown Noise",
+    appUrl: getAppUrl("guided"),
+    ctaLabel: "Browse Guided Sessions in App →",
   },
   {
     id: "soft-focus",
@@ -17,6 +21,8 @@ const TRACKS = [
     url: "/audio/soft_focus_10s.wav",
     duration: 10,
     badge: "528 Hz · AM Modulation",
+    appUrl: getAppUrl("frequencyLab"),
+    ctaLabel: "Open Frequency Lab in App →",
   },
   {
     id: "quiet-meditation",
@@ -26,6 +32,8 @@ const TRACKS = [
     url: "/audio/quiet_meditation_10s.wav",
     duration: 10,
     badge: "7.83 Hz · Headphones",
+    appUrl: getAppUrl("guided"),
+    ctaLabel: "Browse Guided Sessions in App →",
   },
   {
     id: "converter-432",
@@ -35,6 +43,8 @@ const TRACKS = [
     url: "/audio/converter_432hz_retuned_preview.wav",
     duration: 3.06,
     badge: "432 Hz · Warmer Pitch",
+    appUrl: getAppUrl("converter"),
+    ctaLabel: "Open Converter in App →",
   },
   {
     id: "converter-440-orig",
@@ -44,6 +54,8 @@ const TRACKS = [
     url: "/audio/converter_440hz_original_preview.wav",
     duration: 3.00,
     badge: "440 Hz · Standard Pitch",
+    appUrl: getAppUrl("converter"),
+    ctaLabel: "Open Converter in App →",
   },
 ];
 ---
@@ -144,8 +156,8 @@ const TRACKS = [
       <!-- Direct app link -->
       <div class="console-quiet-footer">
         <span>Like this sound?</span>
-        <a id="console-direct-app-link" href="https://heartz.pk-1ca.workers.dev/?session=deep-ground" rel="noopener noreferrer">
-          Open in HEARTz app →
+        <a id="console-direct-app-link" href={TRACKS[0].appUrl} rel="noopener noreferrer">
+          {TRACKS[0].ctaLabel}
         </a>
       </div>
 
@@ -348,8 +360,9 @@ const TRACKS = [
 
     if (announcer) announcer.textContent = `Selected: ${track.title}`;
 
-    if (directAppLink && track.id) {
-      directAppLink.setAttribute("href", `https://heartz.pk-1ca.workers.dev/?session=${track.id}`);
+    if (directAppLink && track.appUrl) {
+      directAppLink.setAttribute("href", track.appUrl);
+      directAppLink.textContent = track.ctaLabel || "Browse Guided Sessions in App →";
     }
   }
 

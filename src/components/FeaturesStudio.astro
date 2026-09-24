@@ -1,4 +1,6 @@
 ---
+import { getAppUrl } from "../config/appLinks";
+
 // Exactly 3 Products = Exactly 3 Majestic Resonant Spheres
 const ACOUSTIC_TOOLS = [
   {
@@ -11,7 +13,7 @@ const ACOUSTIC_TOOLS = [
     audioUrl: "/audio/converter_432hz_retuned_preview.wav",
     sphereGradient: "radial-gradient(circle at 35% 30%, #FDC5B8 0%, #F86934 32%, #AF0A25 68%, #2C0515 100%)",
     specs: ["48 kHz / Float32", "Lossless WAV Export", "100% In Browser (0 Uploads)"],
-    appUrl: "https://heartz.pk-1ca.workers.dev/?tool=converter",
+    appUrl: getAppUrl("converter"),
     ctaLabel: "Open Converter in App"
   },
   {
@@ -24,7 +26,7 @@ const ACOUSTIC_TOOLS = [
     audioUrl: "/audio/soft_focus_10s.wav",
     sphereGradient: "radial-gradient(circle at 35% 30%, #FFF8E1 0%, #F7D86C 28%, #F9A649 60%, #AF0A25 90%, #2C0515 100%)",
     specs: ["528 Hz & 432 Hz Base", "Binaural Modulation", "Anti-Pop Gain Ramp"],
-    appUrl: "https://heartz.pk-1ca.workers.dev/?tool=lab",
+    appUrl: getAppUrl("frequencyLab"),
     ctaLabel: "Open Frequency Lab in App"
   },
   {
@@ -37,8 +39,8 @@ const ACOUSTIC_TOOLS = [
     audioUrl: "/audio/deep_ground_10s.wav",
     sphereGradient: "radial-gradient(circle at 35% 30%, #E7927F 0%, #C85038 32%, #8C2D19 70%, #2C0515 100%)",
     specs: ["Binaural Brown Noise", "Ocean Waves", "Click-Free Fade"],
-    appUrl: "https://heartz.pk-1ca.workers.dev/?session=deep-ground",
-    ctaLabel: "Browse Sessions in App"
+    appUrl: getAppUrl("guided"),
+    ctaLabel: "Browse Guided Sessions in App"
   }
 ];
 ---
@@ -349,6 +351,11 @@ const ACOUSTIC_TOOLS = [
     if (subtitleEl) subtitleEl.textContent = curTool.subtitle;
     if (descEl) descEl.textContent = curTool.description;
     if (linkEl) linkEl.setAttribute("href", curTool.appUrl);
+    if (ctaBtn) {
+      ctaBtn.setAttribute("href", curTool.appUrl);
+      const span = ctaBtn.querySelector("span");
+      if (span) span.textContent = curTool.ctaLabel;
+    }
 
     if (chipsEl) {
       chipsEl.innerHTML = curTool.specs.map((s: string) => `<span class="sphere-chip">${s}</span>`).join("");
