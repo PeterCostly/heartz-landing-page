@@ -1,27 +1,20 @@
 # HEARTz
 
-> In-browser acoustic frequency player, binaural soundscapes, and 432 Hz audio converter.
+> A browser-based workspace for exploring sound, creating frequencies and retuning supported audio.
 
-HEARTz is a client-side web audio platform engineered for focus, meditation, and acoustic retuning. Audio processing runs locally in the browser via the Web Audio API with zero cloud audio uploads.
+HEARTz has a public introduction at https://heartz.app/ and an account-based application at https://app.heartz.app/. The application offers guided soundscapes, a frequency lab, a 440-to-432 Hz converter and a personal library of saved settings.
 
-## Core Features & Tools
-- [432 Hz Song Converter](https://heartz.app/#features): Client-side pitch retuning from standard concert pitch (A4 = 440 Hz) to Verdi tuning (A4 = 432 Hz) with lossless 16-bit 48 kHz WAV export.
-- [Frequency Laboratory](https://heartz.app/#features): 0.01 Hz precision sine tone synthesizer with binaural amplitude modulation (including 432 Hz, 528 Hz, and 7.83 Hz Schumann resonance).
-- [Guided Soundscapes](https://heartz.app/#features): Curated acoustic noise environments (binaural brown noise, pink noise, ocean soundscapes) with click-free volume fades.
-- [Acoustic Audio Console](https://heartz.app/#demo-player): Interactive browser player with real-time oscilloscope waveform visualizer.
-- [Privacy Architecture](https://heartz.app/#privacy): 100% on-device audio decoding, processing, and encoding; source audio files never leave the user device.
+## Explore
 
-## Application Links
-- [Open HEARTz Application](https://app.heartz.app/): Main application workspace.
-- [Audio Converter Tool](https://app.heartz.app/converter): Direct link to song converter.
-- [Frequency Lab Tool](https://app.heartz.app/frequency-lab): Direct link to pure tone generator.
-- [Guided Sessions](https://app.heartz.app/guided): Pre-configured soundscapes.
-- [User Library](https://app.heartz.app/library): Locally stored custom audio presets (IndexedDB).
+- [Try audio samples](https://heartz.app/#demo-player) on the public landing page.
+- [Create an account](https://app.heartz.app/signup) to use the application.
+- [Open the converter](https://app.heartz.app/converter) to retune a supported audio file and download a WAV result.
+- [Open Frequency Lab](https://app.heartz.app/frequency-lab) to configure tones and binaural differences.
+- [Browse guided sessions](https://app.heartz.app/guided) for ready-made soundscapes.
+- [Open My library](https://app.heartz.app/library) to return to saved settings.
 
-## Technical Documentation
-- [Full Specifications](https://heartz.app/llms-full.txt): Complete technical architecture, DSP formulas, acoustic references, and FAQs.
+## Data and availability
 
-## Contact & Organization
-- [Website](https://heartz.app/): Official landing page.
-- Contact: contact@aitificer.com
-- Author: @aitificer
+Audio processing takes place on the user's device. Account sign-in uses Firebase Authentication. Saved settings are stored in the current browser for the signed-in account; they do not yet sync across devices. Source music files and rendered audio are not stored in the account library.
+
+For further detail, see [the HEARTz product reference](https://heartz.app/llms-full.txt).

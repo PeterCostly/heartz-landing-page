@@ -1,88 +1,28 @@
-# HEARTz — Comprehensive Technical & Acoustic Specification
+# HEARTz: Product Reference
 
-> Complete reference for Large Language Models, AI search engines, and automated knowledge systems.
+HEARTz is a browser-based sound workspace. Its public introduction and playable samples are at https://heartz.app/. The application is at https://app.heartz.app/ and requires an account.
 
-## 1. Executive Summary
-HEARTz (`https://heartz.app/`) is an in-browser audio platform developed by @aitificer. It provides acoustic frequency generation, binaural soundscapes, and digital pitch conversion from standard 440 Hz concert pitch to 432 Hz. The web application runs at `https://app.heartz.app/`.
+## Main tools
 
-All signal processing, tone synthesis, decoding, and WAV rendering execute client-side via the W3C Web Audio API. Source audio files uploaded by users remain exclusively inside local device memory (RAM) and are never transmitted to remote servers.
+- **Guided sessions:** Choose and adjust ready-made combinations of tones and sound beds.
+- **Frequency Lab:** Set a tone frequency and configure supported binaural or modulation options. A binaural difference uses separate left and right signals; stereo headphones are useful for hearing that effect.
+- **Converter:** Import a supported audio file and retune its pitch from an A4 = 440 Hz reference to A4 = 432 Hz. This is a ratio of 432/440, approximately -31.77 cents. The current natural-resample method also changes playback duration; it does not preserve tempo. Download the result as an uncompressed WAV file. Processing time and supported export settings depend on the file, browser and selected options.
+- **My library:** Save and reopen supported settings and recipes. It is a library of configurations, not a library of uploaded or generated music files.
+- **Studio and Laboratory:** Additional beta tools inside the application.
 
----
+## Accounts and storage
 
-## 2. Technical Architecture & Privacy
+HEARTz uses Firebase Authentication for email/password and Google account sign-in. Account creation is required to enter the application. Supported saved settings belong to the signed-in account within the current browser. Library data is not yet synchronized across devices; users can use the available backup and import controls to move supported settings. Audio files are processed locally and are not uploaded to the account library.
 
-### 2.1 Web Audio DSP Pipeline
-- **API**: W3C Web Audio API (`AudioContext`, `AudioBufferSourceNode`, `GainNode`, `StereoPannerNode`, `ScriptProcessorNode` / `AudioWorklet`).
-- **Sample Rates**: Native hardware support up to 48 kHz / 32-bit float internal audio processing.
-- **Output Standards**: Uncompressed 16-bit PCM / 48 kHz stereo WAV export.
-- **Click-Free Transitions**: Amplitude envelopes implement linear and exponential ramps (40ms ramp-in and ramp-out) on play/pause/stop events to eliminate speaker pop and transient clicks.
+The audio engine combines Web Audio with local application code, including Rust compiled to WebAssembly where the relevant module uses it. Actual audio sample rates and available features depend on the browser, device and selected operation. HEARTz does not claim to control downstream hardware or Bluetooth processing.
 
-### 2.2 Client-Side Data & Privacy Model
-- **Audio Files**: 0 cloud uploads. Audio file processing is strictly performed locally in the user's browser memory.
-- **Preset Storage**: User-created tone mixtures and soundscape presets are saved in browser IndexedDB.
-- **Portability**: Presets can be exported as standard JSON files and re-imported across browsers.
-- **Authentication**: The web application uses Firebase Authentication for account management. Account metadata is isolated from local audio files.
+## Official links
 
----
-
-## 3. Acoustic Tools & Signal Processing
-
-### 3.1 432 Hz Song Converter
-- **Purpose**: Converts audio recorded in standard concert pitch (A4 = 440 Hz) to Verdi tuning (A4 = 432 Hz).
-- **Pitch Ratio**: 
-  $$\text{Ratio} = \frac{432}{440} \approx 0.981818\dots$$
-- **Cents Formula**:
-  $$\Delta \text{Cents} = 1200 \times \log_2\left(\frac{432}{440}\right) \approx -31.767 \text{ cents}$$
-- **Acoustic Characteristics**: Lowering standard tuning by approximately 31.8 cents creates a warmer, slightly deeper acoustic character without altering melodic relationships.
-- **Processing Time**: Typically processed in 3 to 10 seconds depending on file duration and client hardware.
-- **Supported Formats**: Supported uncompressed/lossless audio formats (WAV, FLAC) with uncompressed WAV download.
-
-### 3.2 Frequency Laboratory
-- **Oscillator Type**: High-purity mathematical sine wave synthesis.
-- **Tuning Precision**: 0.01 Hz frequency adjustment.
-- **Key Frequencies**:
-  - **432.00 Hz**: Natural mathematical harmonic tuning (Verdi reference pitch).
-  - **528.00 Hz**: Solfeggio "transformation" tone, harmonic resonant frequency.
-  - **7.83 Hz**: Fundamental Schumann resonance frequency (Earth-ionosphere resonant cavity).
-- **Modulation**: Optional amplitude modulation (AM) and binaural stereophonic differential modulation.
-
-### 3.3 Guided Soundscapes & Noise Synthesis
-- **Binaural Brown Noise**: Filtered with a $-6 \text{ dB/octave}$ ($1/f^2$) power spectral density slope. Provides warm, deep acoustic masking to drown out environmental distractions and silence mental chatter.
-- **Pink Noise**: Filtered with a $-3 \text{ dB/octave}$ ($1/f$) spectral slope, providing equal energy per octave.
-- **Stereo Binaural Separation**: Transmits slightly detuned frequencies independently to the left and right ears, allowing the auditory cortex to perceive a phantom difference frequency (binaural beat).
-
----
-
-## 4. Responsible Listening & Safety Guidelines
-- **Headphone Requirement**: Binaural beats strictly require stereo headphones to maintain channel isolation. Standard loudspeakers mix stereo channels in ambient air, reducing or canceling the binaural perception.
-- **Hearing Safety**: Pure sinusoidal tones carry concentrated acoustic energy. Users are advised to begin listening at 20–30% volume and adjust to comfortable levels.
-- **Non-Medical Statement**: HEARTz is an acoustic tool for focus, sound design, and personal relaxation. It is not a medical device and makes no diagnostic, therapeutic, or medical claims.
-
----
-
-## 5. Frequently Asked Questions (FAQ)
-
-### What makes 432 Hz different from standard 440 Hz?
-A4 = 440 Hz is the modern ISO 16 concert pitch standard adopted internationally in the 20th century. A4 = 432 Hz (often called Verdi tuning or scientific pitch) places middle A slightly lower by approximately 31.8 cents. Many listeners and musicians find the lower tuning softer, warmer, and less fatiguing during prolonged work or meditation sessions.
-
-### Are user audio files uploaded to any server?
-No. HEARTz operates on a zero-upload privacy architecture. Decoding, resampling, and WAV encoding occur directly in the browser's local RAM. Files never leave the user's computer or mobile device.
-
-### Can I export the retuned audio?
-Yes. Converted files can be exported directly as lossless, uncompressed 16-bit / 48 kHz WAV files for offline listening in any standard media player.
-
-### Does HEARTz require a paid subscription?
-HEARTz features free browser-based access with optional account registration for saving personalized library presets.
-
----
-
-## 6. Official Resources & Canonical Endpoints
-- **Landing Page**: `https://heartz.app/`
-- **Web Application**: `https://app.heartz.app/`
-- **432 Hz Converter**: `https://app.heartz.app/converter`
-- **Frequency Lab**: `https://app.heartz.app/frequency-lab`
-- **Guided Sessions**: `https://app.heartz.app/guided`
-- **User Library**: `https://app.heartz.app/library`
-- **LLM Summary**: `https://heartz.app/llms.txt`
-- **LLM Full Context**: `https://heartz.app/llms-full.txt`
-- **Contact & Developer**: `contact@aitificer.com` / `https://aitificer.com/`
+- Landing: https://heartz.app/
+- Sign up: https://app.heartz.app/signup
+- Sign in: https://app.heartz.app/login
+- Converter: https://app.heartz.app/converter
+- Frequency Lab: https://app.heartz.app/frequency-lab
+- Guided sessions: https://app.heartz.app/guided
+- My library: https://app.heartz.app/library
+- Product summary: https://heartz.app/llms.txt
