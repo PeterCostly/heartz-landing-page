@@ -1,0 +1,187 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import ContactFooter from "../components/ContactFooter.astro";
+import { getAppUrl } from "../config/appLinks";
+
+const siteUrl = import.meta.env.SITE || "https://heartz.app";
+const canonicalUrl = new URL("/privacy", siteUrl).href;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+    
+    <title>Privacy Policy & Data Security — HEARTz</title>
+    <meta 
+      name="description" 
+      content="Learn how HEARTz protects your privacy. Local browser-only audio processing, zero cloud audio uploads, minimal Firebase authentication, and clear cookie practices." 
+    />
+
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang="en" href={canonicalUrl} />
+    <link rel="alternate" hreflang="x-default" href={canonicalUrl} />
+
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/png" href="/brand/heartz-app-icon.png" />
+    <link rel="apple-touch-icon" href="/brand/heartz-app-icon.png" />
+    <meta name="theme-color" content="#2C0515" />
+
+    <!-- Google Fonts: Manrope -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" />
+    </noscript>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <Header />
+
+    <main id="main-content" class="container" style="flex: 1; padding: clamp(3rem, 6vw, 5rem) 1.5rem; max-width: 860px; margin: 0 auto;">
+      <div style="font-family: var(--font-mono); font-size: 0.8125rem; color: var(--color-brand-peach); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.75rem;">
+        Legal & Architecture // Privacy First
+      </div>
+
+      <h1 style="font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 700; letter-spacing: -0.03em; margin-bottom: 1rem; color: var(--text-primary); line-height: 1.15;">
+        Privacy Policy & Data Security
+      </h1>
+
+      <div style="display: flex; gap: 1.5rem; color: var(--text-muted); font-size: 0.875rem; font-family: var(--font-mono); margin-bottom: 2.5rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 1.25rem; flex-wrap: wrap;">
+        <span>Effective Date: September 2026</span>
+        <span>·</span>
+        <span>Version 1.0</span>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 2.5rem; color: var(--text-primary); line-height: 1.7; font-size: 1.025rem;">
+        
+        <!-- Summary callout -->
+        <div style="background: var(--bg-surface-glass); border: 1px solid var(--border-card); border-radius: var(--radius-md); padding: 1.5rem 1.75rem;">
+          <h2 style="font-size: 1.15rem; font-weight: 600; color: var(--color-brand-peach); margin-bottom: 0.5rem;">
+            In Short: Privacy-First by Engineering
+          </h2>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">
+            HEARTz is engineered from the ground up so that your audio never leaves your computer or phone. We do not upload, scan, or analyze your audio files on remote servers. We collect only what is strictly necessary to authenticate your account and preserve your settings locally.
+          </p>
+        </div>
+
+        <!-- 1. Zero-Upload Audio Architecture -->
+        <section>
+          <h2 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--color-brand-cream);">
+            1. 0 Cloud Uploads — Local Audio Processing
+          </h2>
+          <p style="margin-bottom: 0.75rem; color: var(--text-muted);">
+            All audio generation, synthesis (pure sine/triangle waves, binaural sound, isochronic tones, 432 Hz retuning), and file decoding happen entirely within your web browser using client-side Web Audio API and WebAssembly.
+          </p>
+          <ul style="padding-left: 1.5rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.5rem;">
+            <li><strong>Audio files remain on your device:</strong> When you select or retune a music track, it is decoded in your local device RAM. We do not store or transmit your audio files to our servers.</li>
+            <li><strong>No telemetry on audio content:</strong> We do not monitor, record, fingerprint, or inspect the audio material you listen to or generate.</li>
+          </ul>
+        </section>
+
+        <!-- 2. What Information We Collect -->
+        <section>
+          <h2 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--color-brand-cream);">
+            2. Information We Collect & Authentication
+          </h2>
+          <p style="margin-bottom: 0.75rem; color: var(--text-muted);">
+            When you create an account to save preferences or access cloud features, we collect minimal account credentials:
+          </p>
+          <ul style="padding-left: 1.5rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.5rem;">
+            <li><strong>Email Address & User ID (UID):</strong> Used exclusively to identify your account and authenticate your sessions.</li>
+            <li><strong>Authentication Provider:</strong> We use Google Firebase Authentication. If you log in via Google OAuth or email/password, your authentication tokens and security credentials are handled according to Google's ISO/IEC 27001 and SOC 2 certified security infrastructure. We never have access to your plain-text passwords.</li>
+          </ul>
+        </section>
+
+        <!-- 3. Local Storage and Presets -->
+        <section>
+          <h2 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--color-brand-cream);">
+            3. Local Storage (IndexedDB & LocalStorage)
+          </h2>
+          <p style="color: var(--text-muted);">
+            Your custom frequency presets, saved generator profiles, session histories, and volume states are stored locally on your device using your browser's <code style="font-family: var(--font-mono); color: var(--color-brand-peach);">IndexedDB</code> and <code style="font-family: var(--font-mono); color: var(--color-brand-peach);">localStorage</code> APIs. You maintain full control over this data, and you can export or clear your local presets directly from your browser settings at any time.
+          </p>
+        </section>
+
+        <!-- 4. Cookies & Tracking Policy -->
+        <section>
+          <h2 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--color-brand-cream);">
+            4. Cookies & Tracking Technologies
+          </h2>
+          <p style="margin-bottom: 0.75rem; color: var(--text-muted);">
+            We respect your attention and digital privacy. We do not sell your personal data or use third-party advertising tracking networks:
+          </p>
+          <ul style="padding-left: 1.5rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.5rem;">
+            <li><strong>Essential Session Cookies:</strong> We use strictly essential cookies and browser storage tokens provided by Firebase Authentication to keep you securely signed in as you navigate the application.</li>
+            <li><strong>Network & CDN Security:</strong> Our application is served through Cloudflare edge servers, which may set essential security headers and cookies to mitigate distributed attacks (DDoS) and secure data in transit.</li>
+            <li><strong>No Advertising Cookies:</strong> We do not load Facebook Pixels, Google AdSense, behavioral marketing beacons, or cross-site tracking scripts.</li>
+          </ul>
+        </section>
+
+        <!-- 5. Third-Party Infrastructure -->
+        <section>
+          <h2 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--color-brand-cream);">
+            5. Third-Party Infrastructure Providers
+          </h2>
+          <p style="margin-bottom: 0.75rem; color: var(--text-muted);">
+            To deliver high availability and secure services, we utilize the following trusted enterprise cloud providers:
+          </p>
+          <ul style="padding-left: 1.5rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.5rem;">
+            <li><strong>Google Cloud & Firebase:</strong> Provides user identity management, serverless backend functions, and database infrastructure.</li>
+            <li><strong>Cloudflare:</strong> Provides global DNS management, SSL/TLS certificate termination, and edge caching for static assets.</li>
+            <li><strong>Google Fonts:</strong> Provides typography stylesheets for consistent display across operating systems.</li>
+          </ul>
+        </section>
+
+        <!-- 6. User Rights & Data Deletion (GDPR / CCPA) -->
+        <section>
+          <h2 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--color-brand-cream);">
+            6. Your Rights & Data Deletion
+          </h2>
+          <p style="margin-bottom: 0.75rem; color: var(--text-muted);">
+            Under applicable data protection regulations (including the EU GDPR and California CCPA), you hold full rights regarding your personal information:
+          </p>
+          <ul style="padding-left: 1.5rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.5rem;">
+            <li><strong>Right to Access:</strong> You may request a copy of any personal data linked to your account.</li>
+            <li><strong>Right to Rectification & Deletion:</strong> You have the right to request the permanent deletion of your account and associated Firebase identity records.</li>
+            <li><strong>How to request deletion:</strong> Contact us directly at <a href="mailto:contact@aitificer.com" style="color: var(--color-brand-peach); text-decoration: underline;">contact@aitificer.com</a> with the subject line <em>"Data Deletion Request"</em>. Requests are processed within 30 days.</li>
+          </ul>
+        </section>
+
+        <!-- 7. Contact Us -->
+        <section style="border-top: 1px solid var(--border-subtle); padding-top: 2rem; margin-top: 1rem;">
+          <h2 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--color-brand-cream);">
+            7. Contact & Controller Information
+          </h2>
+          <p style="color: var(--text-muted); margin-bottom: 1rem;">
+            If you have questions, feedback, or data privacy inquiries regarding HEARTz, please contact the development and support team:
+          </p>
+          <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 1.25rem; font-family: var(--font-mono); font-size: 0.9rem; color: var(--text-primary); display: flex; flex-direction: column; gap: 0.35rem;">
+            <div><strong>Product:</strong> HEARTz Audio Lab (<a href="https://heartz.app" style="color: var(--color-brand-peach);">heartz.app</a>)</div>
+            <div><strong>Developer / Studio:</strong> Aitificer</div>
+            <div><strong>Email Support:</strong> <a href="mailto:contact@aitificer.com" style="color: var(--color-brand-peach);">contact@aitificer.com</a></div>
+          </div>
+        </section>
+
+        <div style="margin-top: 1rem; display: flex; justify-content: flex-start;">
+          <a href="/" class="btn btn-secondary">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span>Back to Home</span>
+          </a>
+        </div>
+
+      </div>
+    </main>
+
+    <ContactFooter />
+  </body>
+</html>
