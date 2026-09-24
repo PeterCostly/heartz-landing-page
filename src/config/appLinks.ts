@@ -3,8 +3,8 @@
  * Defined according to DOMAIN_HEARTZ_APP_HANDOFF_2026-09-23.md
  * and 07_ANTIGRAVITY_LINKS_AND_COPY_HANDOFF.md.
  * 
- * Configurable application origin via PUBLIC_APP_URL.
- * The custom app domain is the production default.
+ * Production always targets the custom app domain. Local previews may override
+ * it with PUBLIC_APP_URL when testing another app origin.
  */
 
 export const APP_ROUTES = {
@@ -23,11 +23,10 @@ export type AppRouteKey = keyof typeof APP_ROUTES;
 export const DEFAULT_APP_ORIGIN = 'https://app.heartz.app';
 
 export function getAppOrigin(): string {
-  const metaEnv = typeof import.meta !== 'undefined' && (import.meta as any).env;
-  const procEnv = typeof globalThis !== 'undefined' && (globalThis as any).process?.env;
-  const envUrl = metaEnv?.PUBLIC_APP_URL || procEnv?.PUBLIC_APP_URL || DEFAULT_APP_ORIGIN;
-
-  return String(envUrl).replace(/\/+$/, '');
+  const origin = import.meta.env.DEV
+    ? import.meta.env.PUBLIC_APP_URL || DEFAULT_APP_ORIGIN
+    : DEFAULT_APP_ORIGIN;
+  return origin.replace(/\/+$/, '');
 }
 
 export function getAppUrl(route: AppRouteKey = 'home'): string {
