@@ -141,16 +141,14 @@ if (!fs.existsSync(distIndex)) {
     }
   }
 
-  // Check Anti-Slop & Digits rule & Email Login
+  // Check Anti-Slop & Digits rule & Truthful Copy
   const digitChecks = [
-    { text: '3 simple tools for better sound.', label: 'Digit "3 simple tools"' },
-    { text: 'Start listening in 3 seconds', label: 'Digit "Start listening in 3 seconds"' },
-    { text: 'Instant email access, 0 subscriptions, 0 ads.', label: 'Digit "Instant email access, 0 subscriptions, 0 ads."' },
+    { text: '3 ways to explore sound.', label: 'Digit "3 ways to explore sound."' },
     { text: '0 cloud uploads', label: 'Digit "0 cloud uploads"' },
     { text: '0 file uploads', label: 'Digit "0 file uploads"' },
-    { text: '0 background servers', label: 'Digit "0 background servers"' },
-    { text: 'start in 3 seconds', label: 'Digit "start in 3 seconds"' },
-    { text: 'Instant email login', label: 'Presence of "Instant email login"' }
+    { text: 'Free to use', label: 'Presence of "Free to use"' },
+    { text: 'Local audio processing', label: 'Presence of "Local audio processing"' },
+    { text: '432 Hz', label: 'Presence of "432 Hz"' }
   ];
 
   for (const dc of digitChecks) {

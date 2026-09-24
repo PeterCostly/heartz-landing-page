@@ -59,7 +59,11 @@ Allow: /
 
 # Default Rule for All Other Crawlers
 User-agent: *
-Allow: /${sitemapLine}`;
+Allow: /${sitemapLine}
+# LLM Knowledge Discovery (llmstxt.org)
+# llms.txt: ${siteUrl ? siteUrl + '/llms.txt' : '/llms.txt'}
+# llms-full.txt: ${siteUrl ? siteUrl + '/llms-full.txt' : '/llms-full.txt'}
+`;
 
   return new Response(robots, {
     headers: {

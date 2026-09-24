@@ -1,30 +1,27 @@
-# HEARTz — Browser-Based Sound Generator & 432 Hz Audio Converter
+# HEARTz
 
-> Note: This document provides structured, factual summary data intended for automated parsing. It is an optional resource and does not constitute a search engine ranking factor.
+> In-browser acoustic frequency player, binaural soundscapes, and 432 Hz audio converter.
 
-## Overview
-HEARTz is a browser-based audio application for tone generation, soundscapes and pitch retuning. An account is required for the application. Audio processing stays in the browser; authentication uses Firebase.
+HEARTz is a client-side web audio platform engineered for focus, meditation, and acoustic retuning. Audio processing runs locally in the browser via the Web Audio API with zero cloud audio uploads.
 
-## Technical Specifications & Features
+## Core Features & Tools
+- [432 Hz Song Converter](https://heartz.app/#features): Client-side pitch retuning from standard concert pitch (A4 = 440 Hz) to Verdi tuning (A4 = 432 Hz) with lossless 16-bit 48 kHz WAV export.
+- [Frequency Laboratory](https://heartz.app/#features): 0.01 Hz precision sine tone synthesizer with binaural amplitude modulation (including 432 Hz, 528 Hz, and 7.83 Hz Schumann resonance).
+- [Guided Soundscapes](https://heartz.app/#features): Curated acoustic noise environments (binaural brown noise, pink noise, ocean soundscapes) with click-free volume fades.
+- [Acoustic Audio Console](https://heartz.app/#demo-player): Interactive browser player with real-time oscilloscope waveform visualizer.
+- [Privacy Architecture](https://heartz.app/#privacy): 100% on-device audio decoding, processing, and encoding; source audio files never leave the user device.
 
-### 1. 432 Hz Music Converter
-- **Function**: Adjusts the reference pitch of uploaded audio from concert pitch (A4 = 440 Hz) to Verdi tuning (A4 = 432 Hz).
-- **Pitch Shift**: -31.767 cents (ratio ~0.981818).
-- **DSP Engine**: Client-side resampling and pitch conversion using Web Audio API buffer routines.
-- **Export Format**: Lossless uncompressed 16-bit / 48 kHz stereo WAV.
-- **Privacy Model**: All decoding, processing, and encoding occur entirely in local browser RAM. No audio data is uploaded to remote servers.
+## Application Links
+- [Open HEARTz Application](https://app.heartz.app/): Main application workspace.
+- [Audio Converter Tool](https://app.heartz.app/converter): Direct link to song converter.
+- [Frequency Lab Tool](https://app.heartz.app/frequency-lab): Direct link to pure tone generator.
+- [Guided Sessions](https://app.heartz.app/guided): Pre-configured soundscapes.
+- [User Library](https://app.heartz.app/library): Locally stored custom audio presets (IndexedDB).
 
-### 2. Frequency Laboratory & Soundscapes
-- **Oscillator Types**: Pure sinusoidal tones at user-defined frequencies (including 432.00 Hz and 528.00 Hz).
-- **Binaural Signal**: Delivers separate sinusoidal frequencies to left and right channels to produce a perceptual binaural difference tone (e.g., a 7.83 Hz difference over a 432 Hz carrier). Stereo headphones preserve the intended channel separation. Keep the device volume comfortable and stop if listening feels uncomfortable.
-- **Sound Masking**: Synthesized brown noise and pink noise filtered to provide broad-spectrum acoustic masking against ambient environmental sounds.
+## Technical Documentation
+- [Full Specifications](https://heartz.app/llms-full.txt): Complete technical architecture, DSP formulas, acoustic references, and FAQs.
 
-### 3. Client-Side Data Storage
-- **Preset Persistence**: User configurations are saved locally via browser IndexedDB.
-- **Export/Import**: Settings can be exported and imported as JSON.
-- **Tracking / Analytics**: None.
-
-## System Resources
-- Website: https://heartz.app/
-- Web Application: https://app.heartz.app/
+## Contact & Organization
+- [Website](https://heartz.app/): Official landing page.
 - Contact: contact@aitificer.com
+- Author: @aitificer
