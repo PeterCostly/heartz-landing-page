@@ -2,7 +2,7 @@
 
 Use this copy to replace the current event-feedback template before inviting testers. Keep the form in English, open to anyone with the link, and leave email collection off. Avoid a file-upload question because it requires a Google account.
 
-Before sharing: in Google Forms, open **Settings → Responses** and turn off **Limit to 1 response**. Use **Publish → Manage** to set **General access** to **Anyone with the link**, then publish. Open the responder link in a private window without a Google session and confirm that the questions load without a sign-in prompt. The responder link redirected an unauthenticated check to Google sign-in on 2026-09-24; the form is not yet confirmed public.
+Before sharing: in Google Forms, open **Settings → Responses** and turn off **Limit to 1 response**. Use **Publish → Manage** to set **General access** to **Anyone with the link**, then publish. Open the responder link in a private window without a Google session and confirm that the questions load without a sign-in prompt. An earlier link redirected an unauthenticated check to Google sign-in on 2026-09-24; the new short link has not been confirmed anonymously.
 
 **Title:** Help improve HEARTz
 
@@ -18,6 +18,6 @@ Before sharing: in Google Forms, open **Settings → Responses** and turn off **
 
 **Form theme:** Accent `#AF0A25` (HEARTz crimson). Use a dark plum header image only if the form allows it without reducing text contrast; otherwise leave the default light background. Avoid collecting names or email unless a tester explicitly wants a reply.
 
-**Public responder link:** https://docs.google.com/forms/d/e/1FAIpQLSfkBDR1nXuy1qWjDpv_2qvOaDR5nMRy-LVFed0lA-M9MLXgRw/viewform
+**Public responder link supplied by the owner:** https://forms.gle/CSJ1jNrsLnDcPyKW8
 
 **Landing placement:** One “Share feedback ↗” button near the final call to action. The button uses the responder link above, not the editor or preview URL.

@@ -162,8 +162,6 @@ body {
 @media (max-width: 540px) {
   .header-actions .btn { padding: 0.6rem 0.75rem; font-size: 0.8rem; }
   .header-actions .btn svg { display: none; }
-  .brand-sygnet-icon { width: 28px; height: 28px; }
-  .brand-text { font-size: 1.2rem; }
 }
 .brand-mark {
   display: inline-flex;
@@ -192,6 +190,18 @@ body {
   color: var(--color-brand-peach);
   letter-spacing: -0.02em;
   line-height: 1;
+}
+@media (max-width: 540px) {
+  .brand-sygnet-icon { width: 28px; height: 28px; }
+  .brand-text { font-size: 1.2rem; }
+}
+@media (max-width: 360px) {
+  .header-inner { gap: 0.35rem; }
+  .brand-mark { gap: 0.3rem; }
+  .brand-sygnet-icon { width: 24px; height: 24px; }
+  .brand-text { font-size: 1rem; }
+  .header-actions { gap: 0.2rem; }
+  .header-actions .btn { padding: 0.55rem 0.55rem; font-size: 0.75rem; }
 }
 .nav-links {
   display: none;
