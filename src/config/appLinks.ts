@@ -4,7 +4,7 @@
  * and 07_ANTIGRAVITY_LINKS_AND_COPY_HANDOFF.md.
  * 
  * Configurable application origin via PUBLIC_APP_URL.
- * Default fallback to tested workers.dev origin until custom domain app.heartz.app is fully active.
+ * The custom app domain is the production default.
  */
 
 export const APP_ROUTES = {
@@ -14,11 +14,13 @@ export const APP_ROUTES = {
   guided: '/guided',
   library: '/library',
   learn: '/learn',
+  login: '/login',
+  signup: '/signup',
 } as const;
 
 export type AppRouteKey = keyof typeof APP_ROUTES;
 
-export const DEFAULT_APP_ORIGIN = 'https://heartz.pk-1ca.workers.dev';
+export const DEFAULT_APP_ORIGIN = 'https://app.heartz.app';
 
 export function getAppOrigin(): string {
   const metaEnv = typeof import.meta !== 'undefined' && (import.meta as any).env;

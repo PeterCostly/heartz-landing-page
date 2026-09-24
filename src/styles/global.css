@@ -154,6 +154,17 @@ body {
   justify-content: space-between;
   height: 4.5rem;
 }
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+@media (max-width: 540px) {
+  .header-actions .btn { padding: 0.6rem 0.75rem; font-size: 0.8rem; }
+  .header-actions .btn svg { display: none; }
+  .brand-sygnet-icon { width: 28px; height: 28px; }
+  .brand-text { font-size: 1.2rem; }
+}
 .brand-mark {
   display: inline-flex;
   align-items: center;

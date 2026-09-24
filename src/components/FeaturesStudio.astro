@@ -9,10 +9,10 @@ const ACOUSTIC_TOOLS = [
     title: "432 Hz Song Converter",
     subtitle: "Warm 432 Hz (-31.8 cents)",
     tag: "Acoustic Retuning",
-    description: "Drop in any audio file. Our Natural Resample engine retunes it in 3 seconds right in your browser with 0 loss in audio quality.",
+    description: "Import a supported audio file and retune it from a 440 Hz to a 432 Hz reference in your browser. Export the result as WAV.",
     audioUrl: "/audio/converter_432hz_retuned_preview.wav",
     sphereGradient: "radial-gradient(circle at 35% 30%, #FDC5B8 0%, #F86934 32%, #AF0A25 68%, #2C0515 100%)",
-    specs: ["48 kHz / Float32", "Lossless WAV Export", "100% In Browser (0 Uploads)"],
+    specs: ["440 → 432 Hz", "Uncompressed WAV Export", "Local Audio Processing"],
     appUrl: getAppUrl("converter"),
     ctaLabel: "Open Converter in App"
   },
@@ -22,7 +22,7 @@ const ACOUSTIC_TOOLS = [
     title: "Pure Tones & Binaural Beats",
     subtitle: "0.01 Hz Precision Synthesis",
     tag: "Frequency Lab",
-    description: "Dial in clean frequencies like 432 Hz or 528 Hz, add gentle binaural pulses designed for focused work, and sculpt pure sine waves without distortion.",
+    description: "Dial in frequencies like 432 Hz or 528 Hz, set a binaural difference, and shape the sound to your preference.",
     audioUrl: "/audio/soft_focus_10s.wav",
     sphereGradient: "radial-gradient(circle at 35% 30%, #FFF8E1 0%, #F7D86C 28%, #F9A649 60%, #AF0A25 90%, #2C0515 100%)",
     specs: ["528 Hz & 432 Hz Base", "Binaural Modulation", "Anti-Pop Gain Ramp"],
@@ -35,7 +35,7 @@ const ACOUSTIC_TOOLS = [
     title: "Ready-to-Play Soundscapes",
     subtitle: "Organic Grounding Sessions",
     tag: "Instant Sessions",
-    description: "Curated acoustic environments designed for deep work, calming anxiety, and restorative sleep. Features grounding binaural brown noise with smooth volume fades.",
+    description: "Ready-made soundscapes combining tones, noise and gentle fades. Choose a session and adjust it to your preference.",
     audioUrl: "/audio/deep_ground_10s.wav",
     sphereGradient: "radial-gradient(circle at 35% 30%, #E7927F 0%, #C85038 32%, #8C2D19 70%, #2C0515 100%)",
     specs: ["Binaural Brown Noise", "Ocean Waves", "Click-Free Fade"],
@@ -52,11 +52,11 @@ const ACOUSTIC_TOOLS = [
       <div class="stage-header-left">
         <span class="section-tag">What HEARTz Does</span>
         <h2 id="features-title" class="section-headline">
-          3 simple tools for better sound.
+          3 ways to explore sound.
         </h2>
       </div>
       <p class="section-intro stage-header-intro">
-        Everything you need to tune your focus, calm, and music — without complex audio software.
+        Start with a soundscape, create a frequency or retune your own audio.
       </p>
     </div>
 

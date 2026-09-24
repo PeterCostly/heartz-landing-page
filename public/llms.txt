@@ -3,7 +3,7 @@
 > Note: This document provides structured, factual summary data intended for automated parsing. It is an optional resource and does not constitute a search engine ranking factor.
 
 ## Overview
-HEARTz is a client-side web audio application providing tone generation, sound masking, and pitch retuning directly inside modern web browsers. It runs without user registration, external audio processing servers, or telemetry tracking.
+HEARTz is a browser-based audio application for tone generation, soundscapes and pitch retuning. An account is required for the application. Audio processing stays in the browser; authentication uses Firebase.
 
 ## Technical Specifications & Features
 
@@ -25,5 +25,6 @@ HEARTz is a client-side web audio application providing tone generation, sound m
 - **Tracking / Analytics**: None.
 
 ## System Resources
-- Web Application: https://heartz.pk-1ca.workers.dev/
+- Website: https://heartz.app/
+- Web Application: https://app.heartz.app/
 - Contact: contact@aitificer.com

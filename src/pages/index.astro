@@ -14,7 +14,7 @@ import { getAppUrl } from "../config/appLinks";
 // Production canonical URL is configuration-driven via SITE environment variable
 const siteUrl = import.meta.env.SITE;
 const canonicalUrl = siteUrl ? new URL(Astro.url.pathname, siteUrl).href : undefined;
-const ogImageUrl = siteUrl ? new URL("/og-image.png", siteUrl).href : "/og-image.png";
+const ogImageUrl = siteUrl ? new URL("/og-image.png?v=2", siteUrl).href : "/og-image.png?v=2";
 const logoUrl = siteUrl ? new URL("/logo.png", siteUrl).href : "/logo.png";
 const appHomeUrl = getAppUrl("home");
 ---
@@ -26,10 +26,10 @@ const appHomeUrl = getAppUrl("home");
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     
-    <title>HEARTz — Pure Sound for Focus, Calm & 432 Hz Music</title>
+    <title>HEARTz — Explore Sound, Frequencies & 432 Hz Audio</title>
     <meta 
       name="description" 
-      content="A warm, immersive acoustic experience. Play grounding binaural brown noise, pure frequencies, and retune any song to 432 Hz in 3 seconds. 100% private in your browser." 
+      content="Explore pure frequencies, binaural sound and guided sessions. Retune supported audio from 440 to 432 Hz with local browser processing." 
     />
     {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
 
@@ -40,8 +40,8 @@ const appHomeUrl = getAppUrl("home");
 
     <!-- Open Graph & Social -->
     <meta property="og:site_name" content="HEARTz" />
-    <meta property="og:title" content="HEARTz — Pure Sound for Focus, Calm & 432 Hz Music" />
-    <meta property="og:description" content="A warm, immersive acoustic experience. Play grounding binaural brown noise, pure frequencies, and retune any song to 432 Hz in 3 seconds. 100% private in your browser." />
+    <meta property="og:title" content="HEARTz — Explore Sound, Frequencies & 432 Hz Audio" />
+    <meta property="og:description" content="Explore pure frequencies, binaural sound and guided sessions. Retune supported audio from 440 to 432 Hz with local browser processing." />
     <meta property="og:type" content="website" />
     {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
     <meta property="og:locale" content="en_US" />
@@ -49,12 +49,12 @@ const appHomeUrl = getAppUrl("home");
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="HEARTz — Pure Sound for Focus, Calm & 432 Hz Music" />
+    <meta property="og:image:alt" content="HEARTz — Explore Sound, Frequencies & 432 Hz Audio" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="HEARTz — Pure Sound for Focus, Calm & 432 Hz Music" />
-    <meta name="twitter:description" content="A warm, immersive acoustic experience. Play grounding binaural brown noise, pure frequencies, and retune any song to 432 Hz in 3 seconds. 100% private in your browser." />
+    <meta name="twitter:title" content="HEARTz — Explore Sound, Frequencies & 432 Hz Audio" />
+    <meta name="twitter:description" content="Explore pure frequencies, binaural sound and guided sessions. Retune supported audio from 440 to 432 Hz with local browser processing." />
     <meta name="twitter:image" content={ogImageUrl} />
     <meta name="twitter:image:alt" content="HEARTz Sound Generator & 432 Hz Converter" />
 
@@ -78,7 +78,7 @@ const appHomeUrl = getAppUrl("home");
           "applicationCategory": "MultimediaApplication",
           "operatingSystem": "All",
           "browserRequirements": "Requires modern browser with Web Audio API support",
-          "description": "Pure sound for focus and calm. Play binaural brown noise, pure frequencies, and retune music to 432 Hz with 0 cloud uploads.",
+          "description": "Explore pure frequencies, binaural sound and guided sessions. Retune supported audio from 440 to 432 Hz in your browser.",
           "offers": {
             "@type": "Offer",
             "price": "0",
@@ -86,11 +86,11 @@ const appHomeUrl = getAppUrl("home");
             "availability": "https://schema.org/InStock"
           },
           "featureList": [
-            "432 Hz Song Converter with Natural Resample",
+            "440 to 432 Hz audio converter",
             "Binaural Brown Noise Generator",
             "Pure Tone Synthesizer (432 Hz, 528 Hz, 7.83 Hz)",
-            "Lossless uncompressed WAV export",
-            "100% client-side 0-upload privacy"
+            "Uncompressed WAV export",
+            "Local browser audio processing"
           ]
         },
         {
@@ -107,7 +107,7 @@ const appHomeUrl = getAppUrl("home");
               "name": "What makes 432 Hz different from standard 440 Hz?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Standard music is tuned to A4 = 440 Hz. A 432 Hz tuning is slightly lower and warmer. Many listeners, musicians, and creators find it softer, more organic, and noticeably less tiring for extended focus or relaxation sessions."
+                "text": "A4 = 440 Hz is a common tuning reference. Retuning it to A4 = 432 Hz lowers pitch by about 31.8 cents. Listen to both and choose what you prefer."
               }
             },
             {
@@ -115,7 +115,7 @@ const appHomeUrl = getAppUrl("home");
               "name": "Do I need headphones to use this?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "For pure frequencies, relaxing noises, and retuned music, standard speakers or earbuds sound great. For binaural beats (like our ocean wave session), stereo headphones are required so each ear receives a slightly different frequency."
+                "text": "Speakers or headphones can play tones and retuned music. For binaural beats, use stereo headphones so each ear receives a different frequency."
               }
             },
             {
@@ -123,7 +123,7 @@ const appHomeUrl = getAppUrl("home");
               "name": "Why do you recommend starting at low volume?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Pure sound waves carry concentrated acoustic energy, even when they feel gentle. Starting at 20–30% volume protects your hearing and lets your ears ease into the sound comfortably."
+                "text": "Your device and headphones affect the actual sound level. Start low, raise it only to a comfortable level, and stop if listening feels uncomfortable."
               }
             },
             {
@@ -131,7 +131,7 @@ const appHomeUrl = getAppUrl("home");
               "name": "Is HEARTz free and private?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Yes. HEARTz runs 100% in your browser with simple email login, 0 subscriptions, and 0 ads. Your audio files and music never leave your device."
+                "text": "HEARTz is free to use. Sign in with email or Google. Audio files are processed in your browser; your account uses Firebase Authentication, while saved settings and library items stay in this browser."
               }
             }
           ]
