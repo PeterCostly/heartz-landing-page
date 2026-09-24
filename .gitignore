@@ -5,3 +5,4 @@ scripts/demo_generator/target/
 .DS_Store
 *.log
 .env*
+.wrangler/
