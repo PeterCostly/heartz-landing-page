@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import ContactFooter from "../components/ContactFooter.astro";
+import PostHog from "../components/PostHog.astro";
 import { getAppUrl } from "../config/appLinks";
 
 const siteUrl = import.meta.env.SITE || "https://heartz.app";
@@ -38,6 +39,7 @@ const canonicalUrl = new URL("/privacy", siteUrl).href;
     <noscript>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" />
     </noscript>
+    <PostHog />
   </head>
   <body>
     <a href="#main-content" class="skip-link">Skip to content</a>
@@ -136,6 +138,7 @@ const canonicalUrl = new URL("/privacy", siteUrl).href;
             <li><strong>Firebase Authentication:</strong> Manages HEARTz accounts and sign-in. HEARTz does not currently sync your saved recipes or upload your audio to a Firebase database.</li>
             <li><strong>Cloudflare:</strong> Provides global DNS management, SSL/TLS certificate termination, and edge caching for static assets.</li>
             <li><strong>Google Fonts:</strong> Provides typography stylesheets for consistent display across operating systems.</li>
+            <li><strong>PostHog (EU Cloud):</strong> Provides anonymous, privacy-conscious interface usage analytics hosted in Frankfurt, Germany without third-party advertising cookies or trackers.</li>
             <li><strong>Google Forms:</strong> Opens only if you choose “Share feedback”. Responses you submit there are handled by Google Forms.</li>
           </ul>
         </section>

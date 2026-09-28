@@ -9,6 +9,7 @@ import LibraryShowcase from "../components/LibraryShowcase.astro";
 import ArchitecturePrivacy from "../components/ArchitecturePrivacy.astro";
 import Faq from "../components/Faq.astro";
 import ContactFooter from "../components/ContactFooter.astro";
+import PostHog from "../components/PostHog.astro";
 import { getAppUrl } from "../config/appLinks";
 
 // Production canonical URL is configuration-driven via SITE environment variable
@@ -200,6 +201,7 @@ const appHomeUrl = getAppUrl("home");
         }
       ]
     })} />
+    <PostHog />
   </head>
   <body>
     <a href="#start" class="skip-link">Skip to main content</a>
