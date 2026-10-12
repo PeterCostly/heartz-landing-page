@@ -10,6 +10,7 @@ import ArchitecturePrivacy from "../components/ArchitecturePrivacy.astro";
 import Faq from "../components/Faq.astro";
 import ContactFooter from "../components/ContactFooter.astro";
 import PostHog from "../components/PostHog.astro";
+import { FAQ_ITEMS } from "../data/faq";
 import { getAppUrl } from "../config/appLinks";
 
 // Production canonical URL is configuration-driven via SITE environment variable
@@ -97,9 +98,10 @@ const appHomeUrl = getAppUrl("home");
             "availability": "https://schema.org/InStock"
           },
           "featureList": [
-            "440 to 432 Hz audio converter",
-            "Binaural Brown Noise Generator",
-            "Pure Tone Synthesizer (432 Hz, 528 Hz, 7.83 Hz)",
+            "440 to 432 Hz audio converter (WAV/FLAC)",
+            "Procedural noise generator with tone layers",
+            "Tone generator with 0.01 Hz control resolution",
+            "Configurable binaural differences",
             "Uncompressed WAV export",
             "Local browser audio processing"
           ]
@@ -124,8 +126,8 @@ const appHomeUrl = getAppUrl("home");
         },
         {
           "@type": "AudioObject",
-          "name": "Binaural Brown Noise (432 Hz Sample)",
-          "description": "Grounding binaural brown noise with 432 Hz carrier tone.",
+          "name": "Brown Noise Layered with 432 Hz Tone (Sample)",
+          "description": "Procedural brown noise sample layered with a 432 Hz tone.",
           "contentUrl": (siteUrl || "https://heartz.app") + "/audio/deep_ground_10s.wav",
           "encodingFormat": "audio/wav",
           "duration": "PT10S"
@@ -133,71 +135,29 @@ const appHomeUrl = getAppUrl("home");
         {
           "@type": "AudioObject",
           "name": "Soft Focus 528 Hz (Sample)",
-          "description": "528 Hz pure tone with subtle amplitude modulation for focus.",
+          "description": "528 Hz pure tone sample with subtle amplitude modulation and soft pink noise.",
           "contentUrl": (siteUrl || "https://heartz.app") + "/audio/soft_focus_10s.wav",
           "encodingFormat": "audio/wav",
           "duration": "PT10S"
         },
         {
           "@type": "AudioObject",
-          "name": "432 Hz Song Converter Preview (Sample)",
-          "description": "Audio preview retuned from 440 Hz standard concert pitch to 432 Hz Verdi tuning.",
+          "name": "432 Hz Audio Converter Preview (Sample)",
+          "description": "Audio preview retuned from 440 Hz reference to 432 Hz reference via natural resampling.",
           "contentUrl": (siteUrl || "https://heartz.app") + "/audio/converter_432hz_retuned_preview.wav",
           "encodingFormat": "audio/wav",
           "duration": "PT3.06S"
         },
         {
           "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "What makes 432 Hz different from standard 440 Hz?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "A4 = 440 Hz is a common tuning reference. Retuning it to A4 = 432 Hz lowers pitch by about 31.8 cents. Listen to both and choose what you prefer."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Do I need headphones to use this?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Speakers or headphones can play tones and retuned music. For binaural beats, use stereo headphones so each ear receives a different frequency."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Why do you recommend starting at low volume?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Your device and headphones affect the actual sound level. Start low, raise it only to a comfortable level, and stop if listening feels uncomfortable."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Is HEARTz free and private?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "HEARTz is free to use. Sign in with email or Google. Audio files are processed in your browser; your account uses Firebase Authentication, while saved settings and library items stay in this browser."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Can I use HEARTz on my phone?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "HEARTz has a compact layout for mobile browsers. Samples and the main tools are available on a phone, but long audio conversions may be slower or limited by device memory. A desktop browser offers more room for detailed controls and larger files."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Why is there no sound on my phone?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Tap Play or Start, check your media volume and output device, then try headphones. On iPhone, older browser versions may silence generated Web Audio when the Ring/Silent switch is on. HEARTz requests a playback audio session where the browser supports it; if sound is still missing, try switching Silent off and reopening the page."
-              }
+          "mainEntity": FAQ_ITEMS.map((item) => ({
+            "@type": "Question",
+            "name": item.q,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": item.plainText || item.a.replace(/<[^>]+>/g, '')
             }
-          ]
+          }))
         }
       ]
     })} />

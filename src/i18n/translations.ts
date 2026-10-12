@@ -1,3 +1,8 @@
+/**
+ * @deprecated HISTORICAL ONLY - DO NOT USE IN PRODUCTION
+ * This legacy translation bundle contains obsolete pre-release claims (e.g. "No registration", "zero quality loss").
+ * The production HEARTz landing is English-only and uses modular typed data sources (e.g. src/data/faq.ts).
+ */
 export type Lang = "pl" | "en";
 
 export const translations = {

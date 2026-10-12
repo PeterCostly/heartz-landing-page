@@ -1,28 +1,52 @@
 # HEARTz: Product Reference
 
-HEARTz is a browser-based sound workspace. Its public introduction and playable samples are at https://heartz.app/. The application is at https://app.heartz.app/ and requires an account.
+HEARTz is a free browser-based sound workspace. Short playable samples are available at https://heartz.app/ without registration. The full workspace at https://app.heartz.app/ requires an account through Firebase email/password or Google sign-in.
 
-## Main tools
+## Suitable uses
 
-- **Guided sessions:** Choose and adjust ready-made combinations of tones and sound beds.
-- **Frequency Lab:** Set a tone frequency and configure supported binaural or modulation options. A binaural difference uses separate left and right signals; stereo headphones are useful for hearing that effect.
-- **Converter:** Import a supported audio file and retune its pitch from an A4 = 440 Hz reference to A4 = 432 Hz. This is a ratio of 432/440, approximately -31.77 cents. The current natural-resample method also changes playback duration; it does not preserve tempo. Download the result as an uncompressed WAV file. Processing time and supported export settings depend on the file, browser and selected options.
-- **My library:** Save and reopen supported settings and recipes. It is a library of configurations, not a library of uploaded or generated music files.
-- **Studio and Laboratory:** Additional beta tools inside the application.
+- Retuning a supported WAV or FLAC file locally without uploading the source audio.
+- Configuring a tone, such as 432 Hz or 528 Hz, and choosing supported binaural or modulation parameters.
+- Exploring procedural brown, pink or white noise and guided sound textures according to personal listening preferences.
+- Saving supported configurations for later use in the same browser, and using the export controls available in the relevant tool.
 
-## Accounts and storage
+## Converter
 
-HEARTz uses Firebase Authentication for email/password and Google account sign-in. Account creation is required to enter the application. Supported saved settings belong to the signed-in account within the current browser. Library data is not yet synchronized across devices; users can use the available backup and import controls to move supported settings. Audio files are processed locally and are not uploaded to the account library.
+Input supports specified WAV and FLAC formats, not arbitrary audio formats or MP3. Supported sources are mono/stereo at 44.1, 48, 88.2 or 96 kHz: WAV PCM16/24/32 or Float32, and FLAC 16/24/32-bit. Browser memory, file size and available file-saving capabilities can limit an operation even when its format is supported.
 
-The audio engine combines Web Audio with local application code, including Rust compiled to WebAssembly where the relevant module uses it. Actual audio sample rates and available features depend on the browser, device and selected operation. HEARTz does not claim to control downstream hardware or Bluetooth processing.
+The user supplies the source and target A4 tuning references. A4 = 440 Hz to A4 = 432 Hz applies a pitch ratio of 432/440, approximately -31.77 cents. Natural resampling also slows tempo and increases duration by approximately 1.85%, subject to frame rounding. It does not turn every frequency in a song into 432 Hz or preserve tempo independently.
+
+Export options are uncompressed WAV PCM16, PCM24 or Float32 at a selected 44.1, 48, 88.2 or 96 kHz. The inspected UI defaults to PCM24 / 48 kHz. Output settings are separate from the playback device's runtime sample rate. Resampling changes samples; an uncompressed output container is not a promise of unchanged source samples or zero artifacts.
+
+## Frequency Lab and Guided
+
+Frequency Lab provides controls with 0.01 Hz frequency resolution. This is a control resolution, not a guarantee of physical output accuracy. Carrier ranges depend on the selected range and runtime sample rate; direct subsonic playback is restricted.
+
+A binaural difference is the difference between separate left and right carrier tones. A 7.83 Hz difference is not a direct 7.83 Hz audible carrier. Use stereo headphones to deliver the separate channels to each ear.
+
+Guided offers combinations of procedural tones, noise, pads and drones. Ocean-like textures are procedural sound, not a claim of recorded ocean audio. Brown or pink noise may be combined with a tone or binaural layer; the noise color and binaural parameters are separate features.
+
+## Accounts, local storage and privacy
+
+Selected source audio is decoded and processed locally; HEARTz does not upload it for conversion or add it to the account library. Firebase Authentication handles account sign-in. The website and account services still make network requests.
+
+My library stores supported recipes and configurations for the signed-in account in the current browser profile. It does not store generated audio tracks or synchronize across devices. Export available settings backups before clearing browser data or changing devices. See https://heartz.app/privacy for current service and analytics details.
+
+Local audio processing does not imply that first load, sign-in or every application function works offline.
+
+## Samples and devices
+
+The landing plays short WAV samples with waveform visualization, including an approximately three-second 440/432 comparison. It is distinct from synthesizing a custom session in the application. Audio starts after a user action. Conversion time depends on the source, device, browser and selected settings.
+
+Mobile layouts support the main tools; larger conversions can be limited by memory or browser file-saving capabilities. HEARTz does not certify downstream Bluetooth processing or guarantee background playback on every phone. Start at a comfortable low volume and stop if listening feels uncomfortable.
 
 ## Official links
 
-- Landing: https://heartz.app/
+- Landing and audio samples: https://heartz.app/
 - Sign up: https://app.heartz.app/signup
 - Sign in: https://app.heartz.app/login
 - Converter: https://app.heartz.app/converter
 - Frequency Lab: https://app.heartz.app/frequency-lab
-- Guided sessions: https://app.heartz.app/guided
+- Guided: https://app.heartz.app/guided
 - My library: https://app.heartz.app/library
-- Product summary: https://heartz.app/llms.txt
+- Learn: https://app.heartz.app/learn
+- Data and privacy: https://heartz.app/privacy

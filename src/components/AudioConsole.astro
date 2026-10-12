@@ -4,7 +4,7 @@ import { getAppUrl } from "../config/appLinks";
 const TRACKS = [
   {
     id: "deep-ground",
-    title: "Binaural Brown (432 Hz)",
+    title: "Brown Noise & 432 Hz Tone",
     category: "Grounding Soundscape",
     description: "Brown noise layered with a 432 Hz tone. Listen to the sample, then explore the full controls in HEARTz.",
     url: "/audio/deep_ground_10s.wav",
@@ -26,9 +26,9 @@ const TRACKS = [
   },
   {
     id: "quiet-meditation",
-    title: "Ocean Waves (7.83 Hz)",
+    title: "Ocean Texture (7.83 Hz)",
     category: "Binaural Beats",
-    description: "A 7.83 Hz binaural difference with a 432 Hz carrier and ocean waves. 🎧 Use stereo headphones.",
+    description: "A 7.83 Hz binaural difference with a 432 Hz carrier and procedural ocean-like texture. 🎧 Use stereo headphones.",
     url: "/audio/quiet_meditation_10s.wav",
     duration: 10,
     badge: "7.83 Hz · Headphones",
@@ -39,10 +39,10 @@ const TRACKS = [
     id: "converter-432",
     title: "432 Hz Retune",
     category: "Song Converter",
-    description: "Authentic music track converted from standard 440 Hz pitch to 432 Hz using HEARTz Natural Resample.",
+    description: "Audio preview retuned from standard 440 Hz reference to 432 Hz using HEARTz natural resampling.",
     url: "/audio/converter_432hz_retuned_preview.wav",
     duration: 3.06,
-    badge: "432 Hz · Warmer Pitch",
+    badge: "432 Hz · Retuned Preview",
     appUrl: getAppUrl("converter"),
     ctaLabel: "Open Converter in App →",
   },
@@ -50,7 +50,7 @@ const TRACKS = [
     id: "converter-440-orig",
     title: "Original 440 Hz",
     category: "Reference A/B",
-    description: "Original track excerpt in standard concert 440 Hz pitch for direct A/B acoustic comparison.",
+    description: "Original audio excerpt in standard 440 Hz tuning for direct A/B acoustic comparison.",
     url: "/audio/converter_440hz_original_preview.wav",
     duration: 3.00,
     badge: "440 Hz · Standard Pitch",
@@ -61,7 +61,7 @@ const TRACKS = [
 ---
 <section id="demo-player" class="player-stage-section" aria-labelledby="player-heading">
   <div class="container player-stage-wrapper">
-    <h2 id="player-heading" class="sr-only">Interactive Audio Console & Sound Generator</h2>
+    <h2 id="player-heading" class="sr-only">Playable Audio Samples with Waveform Visualization</h2>
     <div 
       id="hero-console" 
       class="acoustic-console-card" 
@@ -73,7 +73,7 @@ const TRACKS = [
       <div class="console-header-bar">
         <div class="console-system-status">
           <span class="status-indicator-light" aria-hidden="true"></span>
-          <span>Binaural Brown Noise · 48 kHz Audio</span>
+          <span>Brown Noise Layer · 48 kHz Audio</span>
         </div>
         <div id="console-time-display" class="console-time-badge">00:00 / 00:10</div>
       </div>
